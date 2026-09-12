@@ -1,0 +1,907 @@
+{
+ "track": "typing",
+ "title": "Touch Typing",
+ "subtitle": "ES QWERTY (Spain) · from home row to code at speed",
+ "icon": "keyboard",
+ "layout": "es",
+ "levels": [
+  {
+   "id": "t01",
+   "n": 1,
+   "title": "Home Row Anchors",
+   "goal": "Find F and J without looking. Never look down again.",
+   "brief": "Put your left index on **F** and your right index on **J**. Both keys have a\nraised bump — that bump is the only thing your hands are allowed to search for,\never. The other six fingers fall into place beside them:\n\n```\nleft   a  s  d  f        j  k  l  ñ   right\n       4  3  2  1        1  2  3  4     (1 = index)\n```\n\nThumbs rest on the space bar. Wrists floating, not resting on the desk. If you\nlose your place, lift both hands, drop them back on the bumps, and continue.\n\n**Rule for the whole track: do not look at the keyboard.** Slow and correct beats\nfast and peeking. Speed is a side effect of accuracy, never the other way round.",
+   "pass": {
+    "wpm": 12,
+    "acc": 0.92
+   },
+   "lessons": [
+    {
+     "id": "t01l1",
+     "title": "Index fingers: f and j",
+     "kind": "keys",
+     "teach": "Only two keys. Feel the bumps. Eyes on the screen.",
+     "focus": [
+      "f",
+      "j"
+     ],
+     "content": "jjj fjf jf fj fff jfj jjjf jfjj jjfj ffjf jjjj ffjj fjfj jjfj ffjj jjfj ffff fjfj jffj jfff jfjf fffj ffjj jjjf fjff jfjj fffj jfjf jjjj jfff jjjj fjjf ffff jjfj fjjf jfjf"
+    },
+    {
+     "id": "t01l2",
+     "title": "Middle fingers: d and k",
+     "kind": "keys",
+     "teach": "Your index fingers stay anchored while the middle fingers move.",
+     "focus": [
+      "d",
+      "k"
+     ],
+     "content": "kd kkk kdk ddd dkd dk fff jjj jfj fj fjf jf jkdf kffj dkjf kfkk djfk jkkf ffkk fdjk fjfj jjdd ffdd fffj dfjd kkfj kdjd kjjf ffdd fjff ffdj dkjd fdkk kdfd jfkk kjjd dkjj jkfk jkdk dkdj kfdd kfkj fkdf kfdf jkff kkfj ffdj fjjd"
+    },
+    {
+     "id": "t01l3",
+     "title": "Ring fingers: s and l",
+     "kind": "keys",
+     "teach": "The ring finger is the weakest. Give it clean, deliberate strokes.",
+     "focus": [
+      "s",
+      "l"
+     ],
+     "content": "lsl sss sl ls sls lll kkk dkd kdk ddd dk kd jfks kkjs lflj flld dksf jjfs ljsf jssj sldl dljj jflk llfd djkf ldld ddjf jfjd klsd dflj lskf lfjl dssd djjj dldf sjdj ljjd fsfd jkkl fskj kksk ffsf djsd kjss ljlj fdsl jlkf kjss"
+    },
+    {
+     "id": "t01l4",
+     "title": "Little fingers: a and ñ",
+     "kind": "keys",
+     "teach": "**ñ** sits where a US keyboard has the semicolon — right of L, right pinky.",
+     "focus": [
+      "a",
+      "ñ"
+     ],
+     "content": "ñañ ñññ aña aaa ña añ sl sss ls sls lll lsl lssñ sslñ ññañ lñla sñññ añss sñsl ñsls lsññ lall alsl ssla slñs slññ sñsa añaa añls ññsa lsaa asla lñaa alñs ñasa asas ñalñ alal ssls ñsññ lass asañ llas ñasñ ñlsñ slal lsss asña"
+    },
+    {
+     "id": "t01l5",
+     "title": "Stretch keys: g and h",
+     "kind": "keys",
+     "teach": "The index fingers stretch inward for G and H, then snap back to F and J.",
+     "focus": [
+      "g",
+      "h"
+     ],
+     "content": "hgh gh hg ghg ggg hhh gjgj jhgh ghgj hhgg fhfh ghhg jggf ghhf hhjj gfff jhhj hhff ffhj jjfh gjff hgfg fjfj fggh hfhh fggg gggj fhjf ffgf jggj jhgg fjjh ffhf gjhg ffjh jjgg jggf jhhg jgff fhfj fgff jjfg"
+    },
+    {
+     "id": "t01l6",
+     "title": "All eight fingers",
+     "kind": "keys",
+     "teach": "Every home-row key, random order. This is your baseline.",
+     "focus": [
+      "a",
+      "s",
+      "d",
+      "f",
+      "g",
+      "h",
+      "j",
+      "k",
+      "l",
+      "ñ"
+     ],
+     "content": "fsf kfs ksñ gas ajh dña lhg asñ gñh klf lja kñh jls dñg skd lak gff ñkd ljk dfa adh dñs khñ jkf hdf hñk fga jhf lñh ghñ jdg lga dgñ kgj fkj lga kkk ada kdh dff ldg skg dgf glf dgj gkk ñaf hhj lñh ñha aah sfg kfl gaa fas dgk hla glk hgg fdd ñhd kñj ñfl jñg jgf fñf hñg alk sja haj afs hñj dñd slj fñj aña ldd ggl djg hfj"
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "t02",
+   "n": 2,
+   "title": "Home Row Words & Rhythm",
+   "goal": "Type real syllables from the home row at an even tempo.",
+   "brief": "Letters are not the unit of typing — *rhythm* is. Aim for a metronome-steady\nstream where every keystroke takes the same time, including the space bar.\n\nTwo habits that decide your ceiling:\n\n1. **Return to home.** After every stroke the finger comes back to its resting key.\n2. **Space with the thumb of the hand that did *not* type the last letter** — it\n   costs nothing now and buys you 10 wpm later.\n\nErrors: this trainer does not let you race past a mistake. Fix it and move on.",
+   "pass": {
+    "wpm": 18,
+    "acc": 0.94
+   },
+   "lessons": [
+    {
+     "id": "t02l1",
+     "title": "Three-letter syllables",
+     "kind": "words",
+     "teach": "",
+     "focus": [
+      "a",
+      "s",
+      "d",
+      "f",
+      "g",
+      "h",
+      "j",
+      "k",
+      "l"
+     ],
+     "content": "gas kal asa ash gas das asa asa gas gas kal dad sal ala das kal kal ash ala sal ash ash kal kal gas ash dad kal ala lag gas asa sal ash gas gas ash lag dad dad gas asa dad dad"
+    },
+    {
+     "id": "t02l2",
+     "title": "Longer clusters",
+     "kind": "words",
+     "teach": "",
+     "focus": [],
+     "content": "dalas hala dalas slash hall dalas gala flash gala sala hala dalas gala falla dalas sala gada falla hala faja falla gada halla faja gada lags flash faja faja hall dalas gada flash falla sala slash"
+    },
+    {
+     "id": "t02l3",
+     "title": "Hand alternation",
+     "kind": "keys",
+     "teach": "Alternating hands is the fastest pattern there is. Notice how much easier `fj` feels than `fd`.",
+     "focus": [],
+     "content": "ljfs lfff alkñ djff jhsa djhh lñad akñd khsñ ghjs dkhk fgñj lfsh gjha dglf hdjj sshf ñjjh lgfa fñfd gfgg hhsg ñkjh jhñj ddhñ akfa dglg gglj sffa sadñ akhs sjhg ahks jjjh lkfs hafg kfah jfjg lñkg djfj gshh ñkld kdad ñklñ kfjh sfjh slfg hjkh dñgl flfñ llhñ gdkg kjhs jñsg gfaf gkld lsgg hñjh adsñ ñghd gdsf jjss akah ffak agfj dajl ñfjd jffh dsñk fgss djkf jhfñ sgaa sggj slhl kdfl ñfff fhhh klkg gfñk ñasj fkhñ ñshs hjkñ gsgd ñlñd ñflk kkla"
+    },
+    {
+     "id": "t02l4",
+     "title": "Same-hand rolls",
+     "kind": "keys",
+     "teach": "Rolls (adjacent fingers, one direction) are the second-fastest pattern. Train them explicitly.",
+     "focus": [],
+     "content": "asdf fdsa jklñ ñlkj sdfg gfds hjkl lkjh asdf jklñ fdsa ñlkj adfs jlñk sfda kjñl asdf fdsa jklñ ñlkj sdfg gfds hjkl lkjh asdf jklñ fdsa ñlkj adfs jlñk sfda kjñl asdf fdsa jklñ ñlkj sdfg gfds hjkl lkjh asdf jklñ fdsa ñlkj adfs jlñk sfda kjñl"
+    },
+    {
+     "id": "t02l5",
+     "title": "Sustained mixed drill",
+     "kind": "words",
+     "teach": "Longer run. Watch your accuracy number, not the clock.",
+     "focus": [],
+     "content": "gada slash lag gala hall halla ash sal slash das asa dalas dalas gada faja sagas gas hall dad hala das hall falla gada hala falla js lag ash hall sagas asa das falla flash lags gala gada dad faja halla sala das lags lags sala flash ala hall gala sagas hall lag gala ala gala dalas sala gada js"
+    }
+   ],
+   "links": [
+    {
+     "track": "nvim",
+     "level": "v01",
+     "note": "hjkl — Vim's movement keys — are four home-row keys you just drilled."
+    }
+   ]
+  },
+  {
+   "id": "t03",
+   "n": 3,
+   "title": "Top Row",
+   "goal": "Reach up and come straight back down.",
+   "brief": "The top row is `q w e r t  y u i o p`. Each finger owns the key diagonally\nabove its home key:\n\n```\nq  w  e  r  t     y  u  i  o  p\n4  3  2  1  1     1  1  2  3  4\n```\n\n`t` and `y` are the index-finger stretches, exactly like `g` and `h` were.\n\nThe mistake everyone makes: the hand *travels* up and stays there. It shouldn't.\nOnly the finger moves; the palm stays put over the home row.",
+   "pass": {
+    "wpm": 22,
+    "acc": 0.94
+   },
+   "lessons": [
+    {
+     "id": "t03l1",
+     "title": "e and i",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "e",
+      "i"
+     ],
+     "content": "eee ei eie iii ie iei kddi kekk idee dikd eedk iidi kied ikid ddek kdid kded eiki kkek kekd idde kkkd idid diid kedk idkd ikki deei dkei ieie eiid deik ekkd iiki deki dkke ieie kddd kkie ddik deee ikii"
+    },
+    {
+     "id": "t03l2",
+     "title": "r and u",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "r",
+      "u"
+     ],
+     "content": "ur rur rrr uuu ru uru jjfu jrfj rfur jjrf ufur uffu rffj uujj frrr fufr ujfr urjf fuuu rfuf rruj ruju rjur fjrj jrrj ujjj frjj rfuf ujjf frff rjrf rfrr uujf ruuf uuuf jjjr ffjr rjjr ujjf rrur ujjr uurj"
+    },
+    {
+     "id": "t03l3",
+     "title": "t and y",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "t",
+      "y"
+     ],
+     "content": "ty tyt yty yyy ttt yt uuty ryuy tutt rtuu ttyy rrtr yryr yyuy yuuu uurr rutt rttt ruyy utuy uuut ttty ruuu tyty ytry yttu rruy uuty tryy tyur rrrr yyyr urtt rtrt uttt rrur yuyr urru tyru tury yutr ytry"
+    },
+    {
+     "id": "t03l4",
+     "title": "w and o",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "w",
+      "o"
+     ],
+     "content": "ow owo www ooo wo wow olww ssww wllo woll owls lsso woww wlww lsoo ooso lssl lwow lsws llol osll ollw ssws lwow olow sosl sssw llww olol wowo llos wslo ssls lwlw oows sssl osoo ossw wlww lols sslo lllo"
+    },
+    {
+     "id": "t03l5",
+     "title": "q and p",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "q",
+      "p"
+     ],
+     "content": "qp qqq ppp pq pqp qpq ññña pqpñ aapq añññ ñpña apaq pñaq qqpq ñññq ñapa ñapp ññqa pqpq aaqa ppqp qñaq pppq apñq qqñp qpññ qqññ appp aañp qñpa ñqqñ qaññ ñqpñ ññaq ñqqñ añqa pppq qqqa qqqa aqñq ñaaq qqpp"
+    },
+    {
+     "id": "t03l6",
+     "title": "Top + home words",
+     "kind": "words",
+     "teach": "",
+     "focus": [],
+     "content": "trigo trigo trigo logro aire para poder flor que lider raro que flor grupo para reto queso logro para reto logro julio salir pared lider para sopa reto puerta salir para prisa reto poder prisa grupo traje trigo flor pared salir puerta para grupo grupo raro logro puerta"
+    },
+    {
+     "id": "t03l7",
+     "title": "Top row sprint",
+     "kind": "keys",
+     "teach": "",
+     "focus": [],
+     "content": "weie pyre qrui ppwp qpwp wyiy qteu yquu ipto iwiy itet itru ptpe iiop prou tooq wpio yrwq uyqe wtoo reio uqty toou oory pier wuou irut itrr eyop iwyr oqwo euer ioep roqe ppor etqi qqre oiui yeuq ypte qiye oupp trer peep ioiu ireu uypy reir rwii qqwo tyqr itto opop toie qtuy eeor itii eqyi rtuq eqqq wtyw oqpe rree rueo poqp ieei iyrq oweq otep teoq wurt ptty iqtt errp ryoy pqre uyer orrp wqpw rrou"
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "t04",
+   "n": 4,
+   "title": "Bottom Row",
+   "goal": "The hardest row. Curl down without collapsing the hand.",
+   "brief": "`z x c v b  n m , . -` sits below home. It is the slowest row for almost\neveryone because the fingers curl *under*, which is a weaker motion than\nreaching up.\n\n```\nz  x  c  v  b     n  m  ,  .  -\n4  3  2  1  1     1  2  3  4  4\n```\n\n`b` is a left-index stretch; `n` belongs to the right index. If you type `b`\nwith the right hand (very common bad habit) you will hit a wall around 55 wpm.\n\n`,` `.` and `-` are here too, and they matter more than the letters: they are\neverywhere in both prose and code.",
+   "pass": {
+    "wpm": 26,
+    "acc": 0.95
+   },
+   "lessons": [
+    {
+     "id": "t04l1",
+     "title": "v and n",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "v",
+      "n"
+     ],
+     "content": "vvv vnv nv nvn nnn vn vvnn fvvj njnn nvvn vjfn jjjj jjfn jvfj vfnj nvvn nvnj jnjj vjjj ffjf nnnf fvvn fjvn nvjf fvvf vfvv jnfj nvfn vnjn ffjn njnj jnvj vjff jfjv vfff vjjj jjvf fvfj fvjv vvjj nffv fvjj"
+    },
+    {
+     "id": "t04l2",
+     "title": "c and m",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "c",
+      "m"
+     ],
+     "content": "mcm cmc ccc mc cm mmm cckk mkdd kkkm cdmc mmdk kkck dddd kdkk ddcd kmmk mcck mccd ddkd cdcd cccd mdmm ckkm kckc kkkk mcmm kdkc cckk mmmm mmmm kmkc mkmk kcmc kddd cmdm ckdm ckkk dmcd cmkm ckdm ccdk cmkk"
+    },
+    {
+     "id": "t04l3",
+     "title": "x and comma",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "x",
+      ","
+     ],
+     "content": "xxx ,,, ,x, ,x x, x,x sx,x l,lx ,xls ls,, xlxl xxxs lsll l,lx ,lls ,,xl ss,x s,ls xls, ,sxl lx,l sxsx xl,x ,lx, slll l,l, xsxs xlx, l,ll ,sxx s,,l ,llx x,,, sx,l ,,xs s,,x llxl l,ls lxsl xlll llss slsl"
+    },
+    {
+     "id": "t04l4",
+     "title": "z and period",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "z",
+      "."
+     ],
+     "content": ".z z.z .z. zzz ... z. aaña azña aa.ñ azza zz.ñ aa.z .zzz .ñññ ñaññ aa.ñ .a.z ...z a.za .azñ aaaa azñ. .z.z zzzñ ññña ñ.a. azzz zaña .ñaa ...a zañ. ñaañ zzza z.ñ. zz.z ññz. zaa. za.a añzñ zz.ñ zañz ñ.añ"
+    },
+    {
+     "id": "t04l5",
+     "title": "b and hyphen",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "b",
+      "-"
+     ],
+     "content": "b- -b bbb b-b -b- --- bbn- bb.n .n.n --.b bb-b n-.- b-.b ..-n .n.b n..- n.n- n.b- bn.. .nn- ..nb b.-b .--b -..b b-.- .--- b-.n bb.- nb.n ..-. bn.- bbn. b-n- n-.- n.n- -b.- nb-- .b-b -n.n -b-b .b.- nnb-"
+    },
+    {
+     "id": "t04l6",
+     "title": "Bottom row words",
+     "kind": "words",
+     "teach": "",
+     "focus": [],
+     "content": "cubrir zumo excavar excavar zumo vez zumo mezcla zumo zumo número mezcla nombre zumo cama número número zumo buzo vez cubrir número cubrir nombre cama nave mezcla buzo cama vínculo cine número buzo vínculo zumo cambio cubrir banco zumo vencer nave nombre nave mezcla"
+    },
+    {
+     "id": "t04l7",
+     "title": "All three rows",
+     "kind": "keys",
+     "teach": "",
+     "focus": [],
+     "content": "jeis eyaj mññe petp kbim joñb amlc adak fped ebzp slon qjwt fwge cotr imjb cude rvbi rsqx eifñ txsñ dtuk ohab pimz vsbz kqpt hmsq rvdñ zeos qnzm jvss voxp wokh bmyf dñor hzll ceqp kqol fteq rmrk bxpa avip tapm nkby mppf uikn ohvc vkup bowu ysri wpeb sñdq yhrw exjt oimf rafy jwsp rluf slfd zwñd hñwn rwor ukua cfmi bufy gxil ixdl seeh nkññ bvqt mple eyiw gcez zxwg hkoe sygu kmoi ggoe jarñ crxj kxhz ajxu yjcl uejp zsrñ lmyp uqgd qxbc pisi owrc kvfz jjub issk juqw tvka ixwf ñnqx"
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "t05",
+   "n": 5,
+   "title": "Full Alphabet & Accents",
+   "goal": "Real Spanish prose, including the dead-key accents.",
+   "brief": "Now the whole letter set, plus the two things a Spanish layout adds:\n\n- **`´` (dead acute)** — the key right of `Ñ`. Press it, *nothing appears*, then\n  press a vowel: `´` + `a` → `á`. That is what \"dead key\" means.\n- **`¨` (dead diaeresis)** — `Shift` + `´`, then `u` → `ü` (pingüino, vergüenza).\n- **`ñ`** — right pinky, already in your fingers from Level 1.\n\nDead keys cost two strokes but only one \"beat\" of rhythm; don't let them\nbreak your tempo. Typing `á` should feel like typing one letter.",
+   "pass": {
+    "wpm": 30,
+    "acc": 0.95
+   },
+   "lessons": [
+    {
+     "id": "t05l1",
+     "title": "Acute accents",
+     "kind": "words",
+     "teach": "",
+     "focus": [
+      "´"
+     ],
+     "content": "acción razón también rápido café también último acción próximo según fácil función más está así según razón también según así difícil próximo según así está difícil próximo análisis avión último fácil más café función próximo fácil público último próximo número"
+    },
+    {
+     "id": "t05l2",
+     "title": "Diaeresis and ñ",
+     "kind": "words",
+     "teach": "",
+     "focus": [
+      "¨",
+      "ñ"
+     ],
+     "content": "cañón año compañero español niño pingüino bilingüe cañón sueño ambigüedad año mañana extraño señal pingüino compañero niño niño vergüenza vergüenza pingüino bilingüe diseño ambigüedad señal pequeño señal pequeño año pingüino sueño bilingüe cañón compañero español niño"
+    },
+    {
+     "id": "t05l3",
+     "title": "Common Spanish words",
+     "kind": "words",
+     "teach": "",
+     "focus": [],
+     "content": "una en ser entre que su la por pero las del en su dos al y sin los el como más sobre es sin le es lo una lo la y dos como es a a del por ser para para sus un ser del si entre esta más ha para la el este si ha el su esta las"
+    },
+    {
+     "id": "t05l4",
+     "title": "Prose: on practice",
+     "kind": "text",
+     "teach": "",
+     "focus": [],
+     "content": "La práctica deliberada no consiste en repetir lo que ya sabes hacer, sino en trabajar justo por encima de tu nivel actual, con atención plena y con información inmediata sobre cada error. Es incómoda por diseño: si la sesión se siente fácil, casi con seguridad estás repasando en lugar de aprender."
+    },
+    {
+     "id": "t05l5",
+     "title": "Prose: on tools",
+     "kind": "text",
+     "teach": "",
+     "focus": [],
+     "content": "Una herramienta que dominas desaparece. Dejas de pensar en el teclado y empiezas a pensar en el texto; dejas de pensar en los comandos y empiezas a pensar en el cambio que quieres hacer. Ese es el único objetivo razonable de todo este esfuerzo."
+    },
+    {
+     "id": "t05l6",
+     "title": "English prose",
+     "kind": "text",
+     "teach": "",
+     "focus": [],
+     "content": "The keyboard is the highest-bandwidth channel you have into a computer, and almost nobody bothers to widen it. Thirty hours of deliberate practice buys you a skill you will use every working day for the rest of your career, which is a return on investment that very few things can match."
+    }
+   ],
+   "links": [
+    {
+     "track": "python",
+     "level": "p01",
+     "note": "Python identifiers are ASCII by convention — good accents practice is prose, not code."
+    }
+   ]
+  },
+  {
+   "id": "t06",
+   "n": 6,
+   "title": "Shift, Capitals & Punctuation",
+   "goal": "Use the opposite-hand Shift. Always.",
+   "brief": "**The rule: the Shift you press is on the hand that is *not* typing the letter.**\nCapital `A` → right pinky holds Shift, left pinky presses A. Capital `L` → left\nShift. Typing `A` with the left Shift twists the wrist and is the single most\ncommon intermediate-level habit worth breaking.\n\nSpanish punctuation you need:\n\n| Character | Keystroke |\n|---|---|\n| `;` | `Shift` + `,` |\n| `:` | `Shift` + `.` |\n| `_` | `Shift` + `-` |\n| `?` | `Shift` + `'` (the key right of `0`) |\n| `¿` | `Shift` + `¡` (the key right of `'`) |\n| `!` | `Shift` + `1` &nbsp;&nbsp; `¡` → its own key |\n| `\"` | `Shift` + `2` |",
+   "pass": {
+    "wpm": 32,
+    "acc": 0.95
+   },
+   "lessons": [
+    {
+     "id": "t06l1",
+     "title": "Opposite-hand Shift",
+     "kind": "words",
+     "teach": "",
+     "focus": [],
+     "content": "Sol Feliz Lima Madrid Perú Tokio Feliz Roma Luis Java Quito Luis Sol Óscar Gato Jazz Hola Perú Feliz Sol Wifi Lima Zeta Java Ana Wifi Lima Kant Kant Ávila Tokio Uva Tokio Java Yoga Feliz Yoga Feliz Roma Uva"
+    },
+    {
+     "id": "t06l2",
+     "title": "CamelCase and SCREAMING_CASE",
+     "kind": "code",
+     "teach": "Notice how much Shift work code demands compared to prose.",
+     "focus": [],
+     "content": "getUserName setTimeout MAX_RETRIES HttpClient parseJSON DEFAULT_PORT readFile isValid TOTAL_COUNT DataFrame toString MIN_VALUE userId apiKey BASE_URL onClick handleError CACHE_TTL buildIndex nextToken IS_ENABLED loadConfig"
+    },
+    {
+     "id": "t06l3",
+     "title": "Spanish punctuation",
+     "kind": "text",
+     "teach": "",
+     "focus": [
+      "¿",
+      "¡",
+      ";",
+      ":",
+      "?",
+      "!"
+     ],
+     "content": "¿Vienes mañana? ¡Claro que sí! Dijo: «ya está listo»; luego se fue. ¿Cuántos? Tres, quizá cuatro. ¡No lo sabía! ¿De verdad? Sí: seguro. Uno, dos, tres; después, el resto. ¿Y tú? ¡Ánimo!"
+    },
+    {
+     "id": "t06l4",
+     "title": "Mixed prose with punctuation",
+     "kind": "text",
+     "teach": "",
+     "focus": [],
+     "content": "Cuando escribes sin mirar, la atención se libera: ya no vigilas los dedos, sino las ideas. Y esa es la diferencia real entre teclear y escribir; entre operar una máquina y pensar con ella. ¿Vale la pena? Sin duda: es la inversión de tiempo más rentable que conozco."
+    },
+    {
+     "id": "t06l5",
+     "title": "Underscores and identifiers",
+     "kind": "code",
+     "teach": "`_` is `Shift`+`-`, right pinky. In Python you will type it constantly.",
+     "focus": [
+      "_"
+     ],
+     "content": "user_id max_retries http_client parse_json default_port read_file is_valid total_count data_frame to_string min_value api_key base_url on_click handle_error cache_ttl build_index next_token load_config __init__ __name__ __main__ _private snake_case"
+    }
+   ],
+   "links": [
+    {
+     "track": "python",
+     "level": "p01",
+     "note": "snake_case for variables, PascalCase for classes, SCREAMING_CASE for constants — you just drilled all three."
+    }
+   ]
+  },
+  {
+   "id": "t07",
+   "n": 7,
+   "title": "Number Row",
+   "goal": "Numbers without leaving home position.",
+   "brief": "The number row is a long reach, and it is where touch typing usually breaks\ndown. Standard finger assignment:\n\n```\n1  2  3  4  5     6  7  8  9  0  '  ¡\n4  3  2  1  1     1  1  2  3  4  4  4\n```\n\nLeft index covers `4` and `5`; right index covers `6` and `7`. The right pinky\ngets `0`, `'` and `¡` — it is doing a lot of work, which is why it needs its own\ndrill.\n\nWith `Shift` the same row gives you `! \" · $ % & / ( ) = ? ¿`. Note where the\nparentheses live: **`(` is `Shift`+`8`, `)` is `Shift`+`9`** — a reach every\nprogrammer on a Spanish layout makes thousands of times a day.",
+   "pass": {
+    "wpm": 30,
+    "acc": 0.95
+   },
+   "lessons": [
+    {
+     "id": "t07l1",
+     "title": "Index numbers: 4 5 6 7",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "4",
+      "5",
+      "6",
+      "7"
+     ],
+     "content": "657 657 547 457 645 746 547 545 677 574 667 477 646 465 454 657 544 457 445 467 646 557 476 774 766 744 446 446 744 547 466 765 747 777 654 674 456 774 465 457 454 677 477 745 647 546 564 466 655 756 575 747 754 467 454 764 577 467 776 457 676 746 676 445"
+    },
+    {
+     "id": "t07l2",
+     "title": "Middle and ring: 3 8 2 9",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "3",
+      "8",
+      "2",
+      "9"
+     ],
+     "content": "322 822 998 288 223 223 828 993 822 332 823 933 233 892 929 898 932 833 228 333 929 383 928 829 299 829 289 929 998 993 322 298 833 322 388 823 322 283 339 922 939 892 828 383 832 328 939 933 893 983 332 928 333 828 229 289 289 988 988 832 292 989 999 222"
+    },
+    {
+     "id": "t07l3",
+     "title": "Pinky: 1 0 ' ¡",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "1",
+      "0",
+      "'",
+      "¡"
+     ],
+     "content": "''¡ 1¡0 '1' 101 100 000 ''¡ ¡¡' ¡¡0 1'1 0'' ¡1¡ 011 1¡0 ¡00 ¡1' '¡¡ 1¡' '¡1 ''0 010 000 '1' 0'' 1'0 ¡¡0 '1' 10¡ 100 ¡¡1 ¡1¡ ¡¡' 0¡1 ¡11 1¡1 ¡'' ¡11 ''0 011 01' 0'¡ 0¡0 0'1 10¡ 01' '1¡ ¡¡0 1¡' 10' ¡¡0 '0¡ ''0 '¡¡ 001 '00 '0¡ 0¡' 1¡1 ¡'¡ ¡11 ¡11 '¡1 00¡ 1'0"
+    },
+    {
+     "id": "t07l4",
+     "title": "Realistic numbers",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "2026 3.14159 1024 0.001 42 100000 0755 8080 127.0.0.1 1_000_000 0xFF 3e8 2.71828 65535 1440 0b1011 9.81 192.168.1.1 2026-09-12 v1.2.3 10**9 1e-6"
+    },
+    {
+     "id": "t07l5",
+     "title": "Parentheses and shifted digits",
+     "kind": "code",
+     "teach": "`(` = Shift+8, `)` = Shift+9. Drill them until the pair is one motion.",
+     "focus": [
+      "(",
+      ")"
+     ],
+     "content": "(1) (2, 3) f(x) g(a, b) 50% $100 &&  ¿? !=  ((()))  (a) (b) (c) sum(xs) len(s) max(a, b) round(x, 2) print() range(10) zip(a, b) dict()"
+    },
+    {
+     "id": "t07l6",
+     "title": "Numbers in prose",
+     "kind": "text",
+     "teach": "",
+     "focus": [],
+     "content": "En 2026 el equipo procesó 14.320 operaciones, un 27% más que en 2025, con un tiempo medio de 3,4 días y un margen de error del 0,8%. El pico se registró el 12 de septiembre: 1.204 en una sola jornada."
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "t08",
+   "n": 8,
+   "title": "AltGr: the Programmer's Row",
+   "goal": "@ # ~ € | ¬ \\ — the characters a Spanish layout hides.",
+   "brief": "This is the level that separates \"I can type Spanish\" from \"I can type code\non a Spanish keyboard\". **AltGr** is the right Alt key. Hold it with your right\nthumb and strike the number row with the correct finger — do not press AltGr\nwith a finger and then hunt with the same hand.\n\n| Char | Keystroke | Finger |\n|---|---|---|\n| `\\` | `AltGr` + `º` | left pinky |\n| `\\|` | `AltGr` + `1` | left pinky |\n| `@` | `AltGr` + `2` | left ring |\n| `#` | `AltGr` + `3` | left middle |\n| `~` | `AltGr` + `4` | left index |\n| `€` | `AltGr` + `5` | left index |\n| `¬` | `AltGr` + `6` | right index |\n\n`~` is a **dead key** on some macOS Spanish layouts: press `AltGr`+`4` then\n`Space` to get a bare `~`. Try it once now and note which behaviour your machine\nhas — it matters for shell paths and Python's `~` in `pathlib`.",
+   "pass": {
+    "wpm": 26,
+    "acc": 0.94
+   },
+   "lessons": [
+    {
+     "id": "t08l1",
+     "title": "at and hash",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "@",
+      "#"
+     ],
+     "content": "@@@ ### @#@ #@# @# #@ @@@ ### @#@ #@# @# #@ @@@ ### @#@ #@# @# #@ @@@ ### @#@ #@# @# #@ @@@ ### @#@ #@# @# #@ @@@ ### @#@ #@# @# #@ @@@ ### @#@ #@# @# #@ @@@ ### @#@ #@# @# #@"
+    },
+    {
+     "id": "t08l2",
+     "title": "pipe and backslash",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "|",
+      "\\"
+     ],
+     "content": "||| \\\\\\ |\\| \\|\\ |\\ \\| ||| \\\\\\ |\\| \\|\\ |\\ \\| ||| \\\\\\ |\\| \\|\\ |\\ \\| ||| \\\\\\ |\\| \\|\\ |\\ \\| ||| \\\\\\ |\\| \\|\\ |\\ \\| ||| \\\\\\ |\\| \\|\\ |\\ \\| ||| \\\\\\ |\\| \\|\\ |\\ \\| ||| \\\\\\ |\\| \\|\\ |\\ \\|"
+    },
+    {
+     "id": "t08l3",
+     "title": "tilde and euro",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "~",
+      "€"
+     ],
+     "content": "~~~ €€€ ~€~ €~€ ~€ €~ ~~~ €€€ ~€~ €~€ ~€ €~ ~~~ €€€ ~€~ €~€ ~€ €~ ~~~ €€€ ~€~ €~€ ~€ €~ ~~~ €€€ ~€~ €~€ ~€ €~ ~~~ €€€ ~€~ €~€ ~€ €~ ~~~ €€€ ~€~ €~€ ~€ €~ ~~~ €€€ ~€~ €~€ ~€ €~"
+    },
+    {
+     "id": "t08l4",
+     "title": "Emails, decorators, paths",
+     "kind": "code",
+     "teach": "Python decorators, shell pipes, home paths and comments — all AltGr.",
+     "focus": [],
+     "content": "marco@example.com  @property  @staticmethod  @dataclass  ~/proyectosweb  ~/.config/nvim  C:\\Users\\marco  # TODO  # noqa  #!/usr/bin/env python3  a | b  x |= y  cat f | grep x  Optional[int] | None"
+    },
+    {
+     "id": "t08l5",
+     "title": "Shell one-liners",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "ls -la | grep .py\ncat ~/.zshrc | tail -20\nfind . -name '*.json' | wc -l\npython3 -m http.server 8080\ngrep -rn 'TODO' ~/proyectosweb | head\necho $HOME && cd ~/ && pwd"
+    }
+   ],
+   "links": [
+    {
+     "track": "python",
+     "level": "p07",
+     "note": "@decorator syntax needs AltGr+2 — you will type it a lot in Level 7 of Python."
+    },
+    {
+     "track": "nvim",
+     "level": "v09",
+     "note": "Vim's :! shell escapes and | command chaining use these same keys."
+    }
+   ]
+  },
+  {
+   "id": "t09",
+   "n": 9,
+   "title": "Brackets & Braces",
+   "goal": "[ ] { } < > — the four hardest characters on a Spanish layout.",
+   "brief": "On a US keyboard these are single keys. On ES QWERTY they are AltGr combos,\nand they are *everywhere* in code. This level exists because this is the single\nbiggest speed tax a Spanish-layout programmer pays.\n\n| Char | Keystroke | Note |\n|---|---|---|\n| `[` | `AltGr` + `` ` `` | the key right of `P` |\n| `]` | `AltGr` + `+` | right of `` ` `` |\n| `{` | `AltGr` + `´` | the key right of `Ñ` |\n| `}` | `AltGr` + `ç` | right of `´` |\n| `<` | plain key, left of `Z` | left pinky |\n| `>` | `Shift` + `<` | |\n\nAll four AltGr brackets are on the **right pinky column**. Hold AltGr with the\nright thumb, strike with the right pinky, release. One motion, not three.\n\nLearn the *pairs* as units: `[]` `{}` `()` `<>`. Your editor auto-closes them,\nbut your fingers still need to know the shape.",
+   "pass": {
+    "wpm": 24,
+    "acc": 0.94
+   },
+   "lessons": [
+    {
+     "id": "t09l1",
+     "title": "square brackets",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "[",
+      "]"
+     ],
+     "content": "[[[ ]]] [] [][] [ ] [][ [[[ ]]] [] [][] [ ] [][ [[[ ]]] [] [][] [ ] [][ [[[ ]]] [] [][] [ ] [][ [[[ ]]] [] [][] [ ] [][ [[[ ]]] [] [][] [ ] [][ [[[ ]]] [] [][] [ ] [][ [[[ ]]] [] [][] [ ] [][ [[[ ]]] [] [][] [ ] []["
+    },
+    {
+     "id": "t09l2",
+     "title": "curly braces",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "{",
+      "}"
+     ],
+     "content": "{{{ }}} {} {}{} { } }{} {{{ }}} {} {}{} { } }{} {{{ }}} {} {}{} { } }{} {{{ }}} {} {}{} { } }{} {{{ }}} {} {}{} { } }{} {{{ }}} {} {}{} { } }{} {{{ }}} {} {}{} { } }{} {{{ }}} {} {}{} { } }{} {{{ }}} {} {}{} { } }{}"
+    },
+    {
+     "id": "t09l3",
+     "title": "angle brackets",
+     "kind": "keys",
+     "teach": "",
+     "focus": [
+      "<",
+      ">"
+     ],
+     "content": "<<< >>> <> <><> ->  => <= <<< >>> <> <><> ->  => <= <<< >>> <> <><> ->  => <= <<< >>> <> <><> ->  => <= <<< >>> <> <><> ->  => <= <<< >>> <> <><> ->  => <= <<< >>> <> <><> ->  => <= <<< >>> <> <><> ->  => <="
+    },
+    {
+     "id": "t09l4",
+     "title": "All four pairs",
+     "kind": "keys",
+     "teach": "",
+     "focus": [],
+     "content": "() [] {} <> ([{ }]) ([{}]) <[{}]> () [] {} <> ([{ }]) ([{}]) <[{}]> () [] {} <> ([{ }]) ([{}]) <[{}]> () [] {} <> ([{ }]) ([{}]) <[{}]> () [] {} <> ([{ }]) ([{}]) <[{}]> () [] {} <> ([{ }]) ([{}]) <[{}]> () [] {} <> ([{ }]) ([{}]) <[{}]> () [] {} <> ([{ }]) ([{}]) <[{}]>"
+    },
+    {
+     "id": "t09l5",
+     "title": "Python literals",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "xs = [1, 2, 3]\nd = {'a': 1, 'b': 2}\ns = {1, 2, 3}\nt = (1,)\nm = [[0] * 3 for _ in range(3)]\ncfg = {'host': 'localhost', 'port': 8080, 'tags': ['a', 'b']}\ndef f(xs: list[int]) -> dict[str, int]: ..."
+    },
+    {
+     "id": "t09l6",
+     "title": "Comprehensions",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "[x**2 for x in range(10)]\n[x for x in xs if x > 0]\n{k: v for k, v in pairs}\n{c for c in word}\n[(i, x) for i, x in enumerate(xs)]\n[y for row in grid for y in row]"
+    }
+   ],
+   "links": [
+    {
+     "track": "python",
+     "level": "p03",
+     "note": "Every collection literal in Python lives behind these AltGr combos."
+    },
+    {
+     "track": "nvim",
+     "level": "v06",
+     "note": "Vim text objects i[ a{ i( operate on exactly these pairs."
+    }
+   ]
+  },
+  {
+   "id": "t10",
+   "n": 10,
+   "title": "Code Symbols in Context",
+   "goal": "Operators, comparisons and the punctuation of real programs.",
+   "brief": "Individual symbols are easy; *sequences* are what slow you down. `!=`, `->`,\n`:=`, `**`, `//`, `==`, `>=` are two-keystroke units and should be trained as\nunits, the same way you trained `fj`.\n\nWatch for the ones that switch hands mid-symbol — `->` is right-pinky `Shift` +\nleft-bottom `-` then `Shift` + `<`. Those are the expensive ones.",
+   "pass": {
+    "wpm": 28,
+    "acc": 0.95
+   },
+   "lessons": [
+    {
+     "id": "t10l1",
+     "title": "Comparison operators",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "== != <= >= < > is is not in not in == != <= >= < > is is not in not in == != <= >= < > is is not in not in == != <= >= < > is is not in not in == != <= >= < > is is not in not in == != <= >= < > is is not in not in"
+    },
+    {
+     "id": "t10l2",
+     "title": "Arithmetic and assignment",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "+ - * / // % ** += -= *= /= //= **= := + - * / // % ** += -= *= /= //= **= := + - * / // % ** += -= *= /= //= **= := + - * / // % ** += -= *= /= //= **= :="
+    },
+    {
+     "id": "t10l3",
+     "title": "Type annotations",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "def parse(raw: str) -> dict[str, int]:\ndef load(path: Path, *, strict: bool = False) -> list[Row]:\nx: int | None = None\nHandler = Callable[[Event], Awaitable[None]]\nitems: dict[str, list[tuple[int, str]]] = {}"
+    },
+    {
+     "id": "t10l4",
+     "title": "A whole function",
+     "kind": "code",
+     "teach": "Indentation counts. Four spaces, typed as four spaces.",
+     "focus": [],
+     "content": "def summarize(rows: list[dict[str, float]]) -> dict[str, float]:\n    total = sum(r['amount'] for r in rows)\n    n = len(rows)\n    return {\n        'total': total,\n        'mean': total / n if n else 0.0,\n        'max': max((r['amount'] for r in rows), default=0.0),\n    }"
+    },
+    {
+     "id": "t10l5",
+     "title": "Vim command lines",
+     "kind": "code",
+     "teach": "Ex commands are their own typing dialect. Get fluent with `:%s/.../.../g`.",
+     "focus": [],
+     "content": ":%s/old/new/g\n:g/TODO/d\n:e ~/.config/nvim/init.lua\n:vsplit | wincmd l\n:set number relativenumber\n:'<,'>normal A;\n:bufdo %s/foo/bar/ge | update"
+    }
+   ],
+   "links": [
+    {
+     "track": "nvim",
+     "level": "v10",
+     "note": "Level 10 of the Vim track is exactly these ex commands, executed."
+    },
+    {
+     "track": "python",
+     "level": "p08",
+     "note": "Type annotations get their own Python level."
+    }
+   ]
+  },
+  {
+   "id": "t11",
+   "n": 11,
+   "title": "Combined Speed: Code + Commands",
+   "goal": "Full-speed runs on the material of the other two tracks.",
+   "brief": "No new keys. This level is pure transfer: everything you type here is a real\nPython snippet or a real Neovim sequence. If a passage feels slow, that is a\nsignal about which *concept* is still unfamiliar, not just which key.\n\nTarget: 40+ wpm on prose-like code, 96% accuracy. Code wpm is always lower than\nprose wpm — a 60 wpm prose typist typically manages 35–40 on code, and that is\nnormal.",
+   "pass": {
+    "wpm": 38,
+    "acc": 0.96
+   },
+   "lessons": [
+    {
+     "id": "t11l1",
+     "title": "Dataclasses",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "from dataclasses import dataclass, field\n\n@dataclass(frozen=True, slots=True)\nclass Trade:\n    ref: str\n    amount: float\n    currency: str = 'EUR'\n    tags: list[str] = field(default_factory=list)\n\n    def notional(self, fx: float = 1.0) -> float:\n        return self.amount * fx"
+    },
+    {
+     "id": "t11l2",
+     "title": "Comprehensions and generators",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "squares = [n * n for n in range(20) if n % 3]\nindex = {row['id']: row for row in rows}\ntotal = sum(t.amount for t in trades if t.currency == 'EUR')\npairs = list(zip(keys, values, strict=True))\nflat = [x for chunk in chunks for x in chunk]"
+    },
+    {
+     "id": "t11l3",
+     "title": "Neovim normal-mode sequences",
+     "kind": "code",
+     "teach": "Type them as text now; execute them for real in the Vim track.",
+     "focus": [],
+     "content": "ciw  daw  yi(  ca{  di\"  vi]  gUiw  guu  >ip  =ap  0d$  dG  ggVG  ct,  yyp  ddp  xp  J  gJ  2dd  3yy  d2w  c3l  100G  \"ayy  \"ap  qa...q  @a  10@a"
+    },
+    {
+     "id": "t11l4",
+     "title": "Error handling",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "try:\n    payload = json.loads(raw)\nexcept json.JSONDecodeError as exc:\n    logger.warning('bad payload: %s', exc)\n    raise ValueError(f'cannot parse {path!r}') from exc\nelse:\n    return payload\nfinally:\n    handle.close()"
+    },
+    {
+     "id": "t11l5",
+     "title": "Async",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "async def fetch_all(urls: list[str]) -> list[bytes]:\n    async with httpx.AsyncClient(timeout=10.0) as client:\n        tasks = [client.get(u) for u in urls]\n        responses = await asyncio.gather(*tasks, return_exceptions=True)\n    return [r.content for r in responses if not isinstance(r, Exception)]"
+    },
+    {
+     "id": "t11l6",
+     "title": "Lua config for Neovim",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "vim.opt.number = true\nvim.opt.relativenumber = true\nvim.g.mapleader = ' '\nvim.keymap.set('n', '<leader>w', '<cmd>write<cr>', { desc = 'Save' })\nvim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files)\nvim.api.nvim_create_autocmd('TextYankPost', {\n  callback = function() vim.highlight.on_yank() end,\n})"
+    }
+   ],
+   "links": [
+    {
+     "track": "nvim",
+     "level": "v12",
+     "note": "Configuring Neovim in Lua is the Vim track's final level."
+    },
+    {
+     "track": "python",
+     "level": "p09",
+     "note": "async/await is Python Level 9."
+    }
+   ]
+  },
+  {
+   "id": "t12",
+   "n": 12,
+   "title": "Expert: Sustained Accuracy",
+   "goal": "Long runs, mixed material, no warm-up. 50+ wpm at 97%.",
+   "brief": "Expert typing is not about peak speed on a short burst; it is about the\n*absence of collapse* over a long passage. The metric that matters is\nconsistency: your slowest 10 seconds should be within 20% of your fastest.\n\nThree habits at this level:\n\n1. **Read ahead.** Your eyes should be 4–8 characters in front of your fingers.\n2. **Chunk.** Common words (`return`, `self`, `import`, `function`) are single\n   motor programs, not letter sequences.\n3. **Never backspace-storm.** One error, one correction. If you are correcting\n   in bursts you are typing above your control speed — slow down 10%.",
+   "pass": {
+    "wpm": 50,
+    "acc": 0.97
+   },
+   "lessons": [
+    {
+     "id": "t12l1",
+     "title": "Mixed prose sprint",
+     "kind": "text",
+     "teach": "",
+     "focus": [],
+     "content": "There is a particular kind of fluency that only arrives after the mechanics disappear. You stop noticing the keyboard, then you stop noticing the editor, and eventually the only thing left in your attention is the problem itself. Getting there is unglamorous: it is the same drills, done attentively, for longer than feels reasonable. But the payoff compounds every single day you sit down to work, and it never depreciates."
+    },
+    {
+     "id": "t12l2",
+     "title": "Long code passage",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "import asyncio\nfrom collections import defaultdict\nfrom dataclasses import dataclass\nfrom typing import Iterable, Iterator\n\n\n@dataclass(slots=True)\nclass Node:\n    key: str\n    children: list['Node']\n\n    def walk(self) -> Iterator['Node']:\n        yield self\n        for child in self.children:\n            yield from child.walk()\n\n\ndef group_by_depth(root: Node) -> dict[int, list[str]]:\n    out: dict[int, list[str]] = defaultdict(list)\n    stack: list[tuple[Node, int]] = [(root, 0)]\n    while stack:\n        node, depth = stack.pop()\n        out[depth].append(node.key)\n        stack.extend((c, depth + 1) for c in node.children)\n    return dict(out)"
+    },
+    {
+     "id": "t12l3",
+     "title": "Spanish technical prose",
+     "kind": "text",
+     "teach": "",
+     "focus": [],
+     "content": "El cuello de botella de casi cualquier flujo de trabajo técnico no está en la máquina, sino en la interfaz entre la persona y la máquina. Optimizar el código antes de optimizar esa interfaz es, en la mayoría de los casos, resolver el problema equivocado: ganas milisegundos de ejecución y pierdes horas de edición. La proporción correcta es la inversa, y casi nadie la aplica."
+    },
+    {
+     "id": "t12l4",
+     "title": "Symbol-dense sprint",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "cfg = {'db': {'host': '127.0.0.1', 'port': 5432}, 'retries': 3}\nurl = f\"postgres://{u}:{p}@{h}:{port}/{db}?sslmode=require\"\npat = re.compile(r'^\\s*(\\w+)\\s*=\\s*\"([^\"]*)\"\\s*$')\nout = [(k, v) for k, v in cfg.items() if not k.startswith('_')]\nfn: Callable[[int, str], tuple[bool, str | None]] = handler\nassert xs[-1] == ys[0] != zs[1:3][0], f'{xs!r} vs {ys!r}'"
+    },
+    {
+     "id": "t12l5",
+     "title": "Everything at once",
+     "kind": "code",
+     "teach": "",
+     "focus": [],
+     "content": "-- Neovim: format on save for Python only\nvim.api.nvim_create_autocmd('BufWritePre', {\n  pattern = '*.py',\n  callback = function(args)\n    vim.lsp.buf.format({ bufnr = args.buf, timeout_ms = 2000 })\n  end,\n})\n\n# then in the shell:\npython3 -m pytest -q --maxfail=1 && git commit -am 'fmt' && git push\n\n:%s/\\<print(/logger.debug(/g | update | source ~/.config/nvim/init.lua"
+    }
+   ],
+   "links": []
+  }
+ ]
+}

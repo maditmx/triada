@@ -1,0 +1,2908 @@
+{
+ "track": "nvim",
+ "title": "Neovim",
+ "subtitle": "modes, motions, operators and the editing grammar",
+ "icon": "terminal",
+ "levels": [
+  {
+   "id": "v01",
+   "n": 1,
+   "title": "Modes & Survival",
+   "goal": "Know which mode you are in, and how to get back to Normal.",
+   "brief": "Vim's one big idea: **your keyboard means different things in different\nmodes.** Most editors have one mode — every key inserts a character. Vim has\nseveral, and *Normal* is home.\n\n| Mode | You get there by | Keys mean |\n|---|---|---|\n| **Normal** | `Esc` (always) | commands |\n| **Insert** | `i` `a` `o` `I` `A` `O` | literal text |\n| **Visual** | `v` `V` `Ctrl-v` | select |\n| **Command-line** | `:` `/` `?` | ex commands / search |\n\n**The habit that matters most: return to Normal the moment you stop typing.**\nNot when you need a command — immediately. Normal mode is the resting position,\nthe way the home row is the resting position for your fingers.\n\nMovement in Normal mode is `h j k l`:\n\n```\n      k        h  ←  left\n h  <   >  l   j  ↓  down\n      j        k  ↑  up\n                l  →  right\n```\n\nYes, arrow keys work. Use `hjkl` anyway — they are under your fingers, and\nevery operator in Vim composes with them.",
+   "lessons": [
+    {
+     "id": "v01l1",
+     "title": "Left and right",
+     "kind": "move",
+     "teach": "Move the cursor onto the `w` of `world` using only `l`.",
+     "start": {
+      "lines": [
+       "hello world"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "hello world"
+      ],
+      "cursor": [
+       0,
+       6
+      ],
+      "mode": "normal"
+     },
+     "solution": "llllll",
+     "par": 6,
+     "hint": "Six presses of `l`. Count the characters — `hello ` is six.",
+     "note": ""
+    },
+    {
+     "id": "v01l2",
+     "title": "Down and up",
+     "kind": "move",
+     "teach": "`j` goes down, `k` goes up. Get to the last line.",
+     "start": {
+      "lines": [
+       "line one",
+       "line two",
+       "line three"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "line one",
+       "line two",
+       "line three"
+      ],
+      "cursor": [
+       2,
+       0
+      ],
+      "mode": "normal"
+     },
+     "solution": "jj",
+     "par": 2,
+     "hint": "`j` twice.",
+     "note": ""
+    },
+    {
+     "id": "v01l3",
+     "title": "Navigate a small function",
+     "kind": "move",
+     "teach": "Put the cursor on the `p` of `print` (line 2, column 4).",
+     "start": {
+      "lines": [
+       "def greet(name):",
+       "    print('hola ' + name)",
+       "",
+       "greet('marco')"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "def greet(name):",
+       "    print('hola ' + name)",
+       "",
+       "greet('marco')"
+      ],
+      "cursor": [
+       1,
+       4
+      ],
+      "mode": "normal"
+     },
+     "solution": "jllll",
+     "par": 5,
+     "hint": "Down once, then right four times.",
+     "note": ""
+    },
+    {
+     "id": "v01l4",
+     "title": "Insert before the cursor",
+     "kind": "drill",
+     "teach": "`i` enters Insert mode **before** the cursor. Type the missing word, then press `Esc`. Never leave a lesson in Insert mode.",
+     "start": {
+      "lines": [
+       "hola "
+      ],
+      "cursor": [
+       0,
+       5
+      ]
+     },
+     "goal": {
+      "lines": [
+       "hola mundo"
+      ],
+      "mode": "normal"
+     },
+     "solution": "imundo<Esc>",
+     "par": 7,
+     "hint": "`i` then `mundo` then `Esc`.",
+     "note": ""
+    },
+    {
+     "id": "v01l5",
+     "title": "Append after the cursor",
+     "kind": "drill",
+     "teach": "`a` enters Insert **after** the cursor. This is the difference that trips up every beginner: at the end of a line, `i` cannot reach the last position — `a` can.",
+     "start": {
+      "lines": [
+       "def f()"
+      ],
+      "cursor": [
+       0,
+       6
+      ]
+     },
+     "goal": {
+      "lines": [
+       "def f():"
+      ],
+      "mode": "normal"
+     },
+     "solution": "a:<Esc>",
+     "par": 3,
+     "hint": "The cursor is on `)`. `a` puts you just past it.",
+     "note": ""
+    },
+    {
+     "id": "v01l6",
+     "title": "Escape from a mistake",
+     "kind": "drill",
+     "teach": "You are going to make a mess and then undo it. Type `xyz`, press `Esc`, then press `u` to undo. Vim's undo is per *insertion*, not per keystroke — the whole `xyz` disappears at once.",
+     "start": {
+      "lines": [
+       "clean"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "clean"
+      ],
+      "mode": "normal"
+     },
+     "solution": "ixyz<Esc>u",
+     "par": 6,
+     "hint": "`i` `x` `y` `z` `Esc` `u`.",
+     "note": ""
+    },
+    {
+     "id": "v01l7",
+     "title": "Which mode?",
+     "kind": "quiz",
+     "teach": "A quick check before moving on.",
+     "question": "You just pressed `Esc`, then `d`, and nothing seems to have happened. What is Vim waiting for?",
+     "options": [
+      "Nothing — `d` did nothing and was discarded",
+      "A motion or text object to tell `d` what to delete",
+      "A second `Esc` to confirm",
+      "A file name"
+     ],
+     "answer": 1,
+     "why": "`d` is an *operator*. It is incomplete on its own and waits for a motion (`dw`, `d$`) or a doubled key (`dd`). This pending state is the heart of Vim's grammar — Level 3 is built on it. `Esc` cancels it."
+    }
+   ],
+   "links": [
+    {
+     "track": "typing",
+     "level": "t02",
+     "note": "hjkl are home-row keys — Typing Level 2 drills exactly this cluster."
+    }
+   ]
+  },
+  {
+   "id": "v02",
+   "n": 2,
+   "title": "Efficient Motions",
+   "goal": "Stop pressing l forty times.",
+   "brief": "`hjkl` is for fine adjustment. Real navigation happens in words and lines.\n\n**Within a line**\n\n| Key | Moves to |\n|---|---|\n| `w` | start of next **word** (punctuation counts as a word) |\n| `W` | start of next **WORD** (whitespace-delimited only) |\n| `b` | back to start of word |\n| `e` | end of current/next word |\n| `0` | column 0 |\n| `^` | first non-blank character |\n| `$` | end of line |\n\n`word` vs `WORD` matters constantly in code: in `self.items[0]`, `w` stops at\n`.`, `items`, `[`, `0`, `]` — five stops. `W` treats the whole thing as one.\n\n**Across the file**\n\n| Key | Moves to |\n|---|---|\n| `gg` | first line |\n| `G` | last line |\n| `{n}G` | line n (also `:{n}`) |\n| `{` `}` | previous / next blank line |\n\n**Counts.** Almost every motion takes a count prefix: `3w` = three words forward,\n`5j` = five lines down. `count + motion` is the first half of Vim's grammar.",
+   "lessons": [
+    {
+     "id": "v02l1",
+     "title": "Word by word",
+     "kind": "move",
+     "teach": "Get to `three` with word motions, not `l`.",
+     "start": {
+      "lines": [
+       "one two three four"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "one two three four"
+      ],
+      "cursor": [
+       0,
+       8
+      ],
+      "mode": "normal"
+     },
+     "solution": "ww",
+     "par": 2,
+     "hint": "`w` twice.",
+     "note": ""
+    },
+    {
+     "id": "v02l2",
+     "title": "Counted words",
+     "kind": "move",
+     "teach": "Same idea, with a count. Land on `four`.",
+     "start": {
+      "lines": [
+       "one two three four"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "one two three four"
+      ],
+      "cursor": [
+       0,
+       14
+      ],
+      "mode": "normal"
+     },
+     "solution": "3w",
+     "par": 2,
+     "hint": "`3w` — one keystroke cheaper than `www`.",
+     "note": ""
+    },
+    {
+     "id": "v02l3",
+     "title": "End of word",
+     "kind": "move",
+     "teach": "`e` lands on the *last* character of a word. Get to the `e` of `three`.",
+     "start": {
+      "lines": [
+       "one two three four"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "one two three four"
+      ],
+      "cursor": [
+       0,
+       12
+      ],
+      "mode": "normal"
+     },
+     "solution": "3e",
+     "par": 2,
+     "hint": "`3e`.",
+     "note": ""
+    },
+    {
+     "id": "v02l4",
+     "title": "Backwards",
+     "kind": "move",
+     "teach": "From the end, walk back to `two`.",
+     "start": {
+      "lines": [
+       "one two three four"
+      ],
+      "cursor": [
+       0,
+       15
+      ]
+     },
+     "goal": {
+      "lines": [
+       "one two three four"
+      ],
+      "cursor": [
+       0,
+       4
+      ],
+      "mode": "normal"
+     },
+     "solution": "3b",
+     "par": 2,
+     "hint": "`3b`.",
+     "note": ""
+    },
+    {
+     "id": "v02l5",
+     "title": "word vs WORD",
+     "kind": "move",
+     "teach": "`self.items[0]` is five *words* but one **WORD**. `E` jumps to the end of the WORD; lowercase `e` would need five presses to get there.",
+     "start": {
+      "lines": [
+       "self.items[0] = value"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "self.items[0] = value"
+      ],
+      "cursor": [
+       0,
+       12
+      ],
+      "mode": "normal"
+     },
+     "solution": "E",
+     "par": 1,
+     "hint": "`E` — the WORD version of `e`.",
+     "note": ""
+    },
+    {
+     "id": "v02l6",
+     "title": "Line ends",
+     "kind": "move",
+     "teach": "`$` goes to the last character; `^` to the first non-blank. Get to the closing brace.",
+     "start": {
+      "lines": [
+       "    return {'ok': True}"
+      ],
+      "cursor": [
+       0,
+       4
+      ]
+     },
+     "goal": {
+      "lines": [
+       "    return {'ok': True}"
+      ],
+      "cursor": [
+       0,
+       22
+      ],
+      "mode": "normal"
+     },
+     "solution": "$",
+     "par": 1,
+     "hint": "`$`.",
+     "note": ""
+    },
+    {
+     "id": "v02l7",
+     "title": "First non-blank",
+     "kind": "move",
+     "teach": "The cursor is at the end. `0` would put you in the indentation; `^` puts you on real content.",
+     "start": {
+      "lines": [
+       "    return {'ok': True}"
+      ],
+      "cursor": [
+       0,
+       22
+      ]
+     },
+     "goal": {
+      "lines": [
+       "    return {'ok': True}"
+      ],
+      "cursor": [
+       0,
+       4
+      ],
+      "mode": "normal"
+     },
+     "solution": "^",
+     "par": 1,
+     "hint": "`^`.",
+     "note": ""
+    },
+    {
+     "id": "v02l8",
+     "title": "Top and bottom",
+     "kind": "move",
+     "teach": "Jump to the last line, then to line 3.",
+     "start": {
+      "lines": [
+       "one",
+       "two",
+       "three",
+       "four",
+       "five"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "one",
+       "two",
+       "three",
+       "four",
+       "five"
+      ],
+      "cursor": [
+       2,
+       0
+      ],
+      "mode": "normal"
+     },
+     "solution": "G3G",
+     "par": 3,
+     "hint": "`G` then `3G`. `3G` alone would also do it — but practise both.",
+     "note": ""
+    },
+    {
+     "id": "v02l9",
+     "title": "Paragraph hops",
+     "kind": "move",
+     "teach": "`}` jumps to the next blank line. Get from the first function to the second.",
+     "start": {
+      "lines": [
+       "def a():",
+       "    pass",
+       "",
+       "def b():",
+       "    pass"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "def a():",
+       "    pass",
+       "",
+       "def b():",
+       "    pass"
+      ],
+      "cursor": [
+       3,
+       0
+      ],
+      "mode": "normal"
+     },
+     "solution": "}j",
+     "par": 2,
+     "hint": "`}` lands on the blank line; then `j`.",
+     "note": ""
+    }
+   ],
+   "links": [
+    {
+     "track": "python",
+     "level": "p02",
+     "note": "The buffers you navigate here are the Python constructs of Level 2."
+    }
+   ]
+  },
+  {
+   "id": "v03",
+   "n": 3,
+   "title": "The Grammar: Operator + Motion",
+   "goal": "Learn one rule, get a hundred commands for free.",
+   "brief": "This is the level that turns Vim from \"a weird editor\" into a language.\n\n```\n   [count]  operator  [count]  motion\n      2        d                w        →  delete two words\n               c                $        →  change to end of line\n      3        y                y        →  yank three lines\n```\n\n**Operators**\n\n| Op | Does |\n|---|---|\n| `d` | delete (into a register — it is a *cut*, not a discard) |\n| `c` | change = delete, then enter Insert mode |\n| `y` | yank (copy) |\n| `>` `<` | indent / outdent |\n| `gu` `gU` | lowercase / uppercase |\n\n**Doubling an operator makes it act on whole lines**: `dd`, `cc`, `yy`, `>>`.\n\nYou already know a dozen motions from Level 2. Multiply: `dw` `d$` `d0` `dG`\n`dgg` `d}` `cw` `c$` `ce` `yw` `y$` `yG` `>}` `gUw`… none of these had to be\nmemorised separately. That is the whole point.\n\n**`c` deletes slightly differently from `d`.** `cw` behaves like `ce` — it\nchanges to the *end* of the word, not up to the next one, because deleting the\ntrailing space before typing a replacement is almost never what you want.",
+   "lessons": [
+    {
+     "id": "v03l1",
+     "title": "Delete a word",
+     "kind": "drill",
+     "teach": "`dw` deletes from the cursor to the start of the next word.",
+     "start": {
+      "lines": [
+       "remove this word please"
+      ],
+      "cursor": [
+       0,
+       7
+      ]
+     },
+     "goal": {
+      "lines": [
+       "remove word please"
+      ],
+      "mode": "normal"
+     },
+     "solution": "dw",
+     "par": 2,
+     "hint": "Cursor is on `t` of `this`.",
+     "note": ""
+    },
+    {
+     "id": "v03l2",
+     "title": "Delete to end of line",
+     "kind": "drill",
+     "teach": "`d$` — or its synonym `D`.",
+     "start": {
+      "lines": [
+       "keep this # delete this trailing comment"
+      ],
+      "cursor": [
+       0,
+       10
+      ]
+     },
+     "goal": {
+      "lines": [
+       "keep this "
+      ],
+      "mode": "normal"
+     },
+     "solution": "d$",
+     "par": 2,
+     "hint": "`d$`, cursor already on `#`.",
+     "note": ""
+    },
+    {
+     "id": "v03l3",
+     "title": "Change a word",
+     "kind": "drill",
+     "teach": "`cw` deletes the word and drops you in Insert mode. Replace `foo` with `bar`, then `Esc`.",
+     "start": {
+      "lines": [
+       "value = foo"
+      ],
+      "cursor": [
+       0,
+       8
+      ]
+     },
+     "goal": {
+      "lines": [
+       "value = bar"
+      ],
+      "mode": "normal"
+     },
+     "solution": "cwbar<Esc>",
+     "par": 6,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v03l4",
+     "title": "Delete a line",
+     "kind": "drill",
+     "teach": "`dd`. The line is gone and the register holds it.",
+     "start": {
+      "lines": [
+       "keep",
+       "delete me",
+       "keep"
+      ],
+      "cursor": [
+       1,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "keep",
+       "keep"
+      ],
+      "mode": "normal"
+     },
+     "solution": "dd",
+     "par": 2,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v03l5",
+     "title": "Counted line delete",
+     "kind": "drill",
+     "teach": "`3dd` removes three lines. Delete the whole body of the function.",
+     "start": {
+      "lines": [
+       "def f():",
+       "    a = 1",
+       "    b = 2",
+       "    c = 3",
+       "    return a"
+      ],
+      "cursor": [
+       1,
+       4
+      ]
+     },
+     "goal": {
+      "lines": [
+       "def f():",
+       "    return a"
+      ],
+      "mode": "normal"
+     },
+     "solution": "3dd",
+     "par": 3,
+     "hint": "`3dd` from line 2.",
+     "note": ""
+    },
+    {
+     "id": "v03l6",
+     "title": "Delete to end of file",
+     "kind": "drill",
+     "teach": "`dG` deletes from the current line to the last line. Truncate the file after the docstring.",
+     "start": {
+      "lines": [
+       "\"\"\"Module docstring.\"\"\"",
+       "",
+       "import junk",
+       "junk.run()"
+      ],
+      "cursor": [
+       2,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "\"\"\"Module docstring.\"\"\"",
+       ""
+      ],
+      "mode": "normal"
+     },
+     "solution": "dG",
+     "par": 2,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v03l7",
+     "title": "Change to end of line",
+     "kind": "drill",
+     "teach": "`C` is `c$`. Replace the whole return expression.",
+     "start": {
+      "lines": [
+       "    return old_value"
+      ],
+      "cursor": [
+       0,
+       11
+      ]
+     },
+     "goal": {
+      "lines": [
+       "    return None"
+      ],
+      "mode": "normal"
+     },
+     "solution": "CNone<Esc>",
+     "par": 6,
+     "hint": "Cursor sits on `o` of `old_value`.",
+     "note": ""
+    },
+    {
+     "id": "v03l8",
+     "title": "Indent a block",
+     "kind": "drill",
+     "teach": "`>` with a motion, or `>>` for one line. Indent both body lines by one level using a count.",
+     "start": {
+      "lines": [
+       "def f():",
+       "a = 1",
+       "return a"
+      ],
+      "cursor": [
+       1,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "def f():",
+       "    a = 1",
+       "    return a"
+      ],
+      "mode": "normal"
+     },
+     "solution": "2>>",
+     "par": 3,
+     "hint": "`2>>` — the count goes before the doubled operator.",
+     "note": ""
+    },
+    {
+     "id": "v03l9",
+     "title": "Uppercase a word",
+     "kind": "drill",
+     "teach": "`gU` + motion. Turn the constant name into SCREAMING_CASE.",
+     "start": {
+      "lines": [
+       "max_retries = 3"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "MAX_RETRIES = 3"
+      ],
+      "mode": "normal"
+     },
+     "solution": "gUe",
+     "par": 3,
+     "hint": "`gUe` — uppercase to end of word. `e` because `_` is a word character.",
+     "note": ""
+    },
+    {
+     "id": "v03l10",
+     "title": "Compose it yourself",
+     "kind": "quiz",
+     "teach": "You have the grammar now. Use it.",
+     "question": "The cursor is at the start of a 40-line function. You want to delete the function and copy nothing. Which is the cheapest correct command?",
+     "options": [
+      "40dd",
+      "\"_d}",
+      "d}",
+      "dG"
+     ],
+     "answer": 2,
+     "why": "`d}` deletes to the next blank line — no counting required, and it adapts if the function is 38 or 44 lines. `40dd` needs you to count; `dG` deletes the rest of the file. `\"_d}` also works and additionally avoids clobbering the register (Level 7)."
+    }
+   ],
+   "links": [
+    {
+     "track": "typing",
+     "level": "t11",
+     "note": "Typing Level 11 drills these exact sequences as text."
+    }
+   ]
+  },
+  {
+   "id": "v04",
+   "n": 4,
+   "title": "Entering Insert Mode Well",
+   "goal": "Six doors into Insert mode. Pick the right one.",
+   "brief": "Beginners use `i` for everything and then navigate inside Insert mode with\narrow keys. That is the slow path. Choose the entry point that lands the cursor\nwhere you want it:\n\n| Key | Enters Insert… |\n|---|---|\n| `i` | before the cursor |\n| `a` | after the cursor |\n| `I` | at the first non-blank of the line |\n| `A` | at the end of the line |\n| `o` | on a new line **below** |\n| `O` | on a new line **above** |\n| `s` | deleting the character under the cursor |\n| `S` / `cc` | deleting the whole line's content, keeping indent |\n\n`A` and `o` are the two you will use most: appending to a line and opening a new\none are what writing code actually consists of.\n\n**Inside Insert mode, do as little as possible.** No arrow keys, no mouse. Type\nthe text, press `Esc`, move in Normal mode. Every excursion inside Insert mode is\na change Vim cannot repeat with `.` (Level 8).",
+   "lessons": [
+    {
+     "id": "v04l1",
+     "title": "Append at end of line",
+     "kind": "drill",
+     "teach": "`A` — the single most useful insert command. Add the missing colon.",
+     "start": {
+      "lines": [
+       "def process(rows)"
+      ],
+      "cursor": [
+       0,
+       4
+      ]
+     },
+     "goal": {
+      "lines": [
+       "def process(rows):"
+      ],
+      "mode": "normal"
+     },
+     "solution": "A:<Esc>",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v04l2",
+     "title": "Insert at first non-blank",
+     "kind": "drill",
+     "teach": "`I` ignores indentation. Comment out the line.",
+     "start": {
+      "lines": [
+       "    result = compute()"
+      ],
+      "cursor": [
+       0,
+       15
+      ]
+     },
+     "goal": {
+      "lines": [
+       "    # result = compute()"
+      ],
+      "mode": "normal"
+     },
+     "solution": "I# <Esc>",
+     "par": 4,
+     "hint": "`I` then `# ` then `Esc`.",
+     "note": ""
+    },
+    {
+     "id": "v04l3",
+     "title": "Open a line below",
+     "kind": "drill",
+     "teach": "`o` from anywhere on the line.",
+     "start": {
+      "lines": [
+       "import os"
+      ],
+      "cursor": [
+       0,
+       3
+      ]
+     },
+     "goal": {
+      "lines": [
+       "import os",
+       "import sys"
+      ],
+      "mode": "normal"
+     },
+     "solution": "oimport sys<Esc>",
+     "par": 12,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v04l4",
+     "title": "Open a line above",
+     "kind": "drill",
+     "teach": "`O`. Add the shebang.",
+     "start": {
+      "lines": [
+       "import sys"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "#!/usr/bin/env python3",
+       "import sys"
+      ],
+      "mode": "normal"
+     },
+     "solution": "O#!/usr/bin/env python3<Esc>",
+     "par": 24,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v04l5",
+     "title": "Substitute one character",
+     "kind": "drill",
+     "teach": "`s` deletes the character under the cursor and inserts. Fix the operator.",
+     "start": {
+      "lines": [
+       "if x = 1:"
+      ],
+      "cursor": [
+       0,
+       5
+      ]
+     },
+     "goal": {
+      "lines": [
+       "if x == 1:"
+      ],
+      "mode": "normal"
+     },
+     "solution": "s==<Esc>",
+     "par": 4,
+     "hint": "Cursor is on `=`. `s` then `==`.",
+     "note": ""
+    },
+    {
+     "id": "v04l6",
+     "title": "Replace the whole line",
+     "kind": "drill",
+     "teach": "`S` (or `cc`) clears the line but keeps its indentation.",
+     "start": {
+      "lines": [
+       "def f():",
+       "    return wrong_thing()"
+      ],
+      "cursor": [
+       1,
+       8
+      ]
+     },
+     "goal": {
+      "lines": [
+       "def f():",
+       "    return None"
+      ],
+      "mode": "normal"
+     },
+     "solution": "Sreturn None<Esc>",
+     "par": 13,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v04l7",
+     "title": "o keeps indentation",
+     "kind": "drill",
+     "teach": "Notice that `o` inherits the current line's indent — you do not type the spaces. Add a second statement to the body.",
+     "start": {
+      "lines": [
+       "def f():",
+       "    a = 1"
+      ],
+      "cursor": [
+       1,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "def f():",
+       "    a = 1",
+       "    b = 2"
+      ],
+      "mode": "normal"
+     },
+     "solution": "ob = 2<Esc>",
+     "par": 7,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v04l8",
+     "title": "A vs i at end of line",
+     "kind": "quiz",
+     "teach": "One of Vim's genuine gotchas.",
+     "question": "The cursor is on the final `)` of `foo()` and you want to type `:` after it. `i:` gives you `foo(:)`. Why?",
+     "options": [
+      "`i` is broken at end of line",
+      "`i` inserts *before* the cursor, and the cursor is on `)`, not past it",
+      "You need to be in Replace mode",
+      "`:` opens the command line"
+     ],
+     "answer": 1,
+     "why": "In Normal mode the cursor sits *on* a character, never between two. `i` inserts to its left. To get to the right of the last character you need `a` — or `A`, which goes to the end of the line regardless of where you are."
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "v05",
+   "n": 5,
+   "title": "Find & Till: Surgical Line Motions",
+   "goal": "f F t T ; , — the fastest way to a character.",
+   "brief": "`f{char}` jumps **onto** the next occurrence of `{char}` on the current line.\n`t{char}` stops **till** just before it. Capitals search backwards.\n\n| Key | Meaning |\n|---|---|\n| `f,` | forward onto the next `,` |\n| `F,` | backward onto the previous `,` |\n| `t)` | forward, stopping before `)` |\n| `T(` | backward, stopping after `(` |\n| `;` | repeat the last f/F/t/T |\n| `,` | repeat it in the opposite direction |\n\nThese compose with operators, which is where they earn their keep:\n\n- `dt)` — delete up to the closing paren\n- `ct,` — change up to the next comma\n- `df;` — delete through the semicolon\n- `yt=` — yank everything before the `=`\n\n**`f` vs `t` in one sentence:** use `f` when you want the character gone or\nincluded, `t` when you want to stop short of it. `dt)` keeps the `)`; `df)`\neats it.\n\nThe `;` repeat is what makes this fast: `f,` then `;;;` walks a comma-separated\nlist. And `dt)` then `;` will *not* work as you expect — `.` (Level 8) is the\ntool for repeating a change.",
+   "lessons": [
+    {
+     "id": "v05l1",
+     "title": "Jump to a character",
+     "kind": "move",
+     "teach": "Land on the `=`.",
+     "start": {
+      "lines": [
+       "total = a + b + c"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "total = a + b + c"
+      ],
+      "cursor": [
+       0,
+       6
+      ],
+      "mode": "normal"
+     },
+     "solution": "f=",
+     "par": 2,
+     "hint": "`f=`.",
+     "note": ""
+    },
+    {
+     "id": "v05l2",
+     "title": "Till, not onto",
+     "kind": "move",
+     "teach": "`t(` stops one before. Land on the `s` of `process`, i.e. just before `(`.",
+     "start": {
+      "lines": [
+       "result = process(rows)"
+      ],
+      "cursor": [
+       0,
+       9
+      ]
+     },
+     "goal": {
+      "lines": [
+       "result = process(rows)"
+      ],
+      "cursor": [
+       0,
+       15
+      ],
+      "mode": "normal"
+     },
+     "solution": "t(",
+     "par": 2,
+     "hint": "`t(`.",
+     "note": ""
+    },
+    {
+     "id": "v05l3",
+     "title": "Repeat with ;",
+     "kind": "move",
+     "teach": "Walk to the third comma.",
+     "start": {
+      "lines": [
+       "f(a, b, c, d)"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "f(a, b, c, d)"
+      ],
+      "cursor": [
+       0,
+       9
+      ],
+      "mode": "normal"
+     },
+     "solution": "f,;;",
+     "par": 4,
+     "hint": "`f,` then `;` twice.",
+     "note": ""
+    },
+    {
+     "id": "v05l4",
+     "title": "Search backwards",
+     "kind": "move",
+     "teach": "`F` goes left. From the end, land on the first `_`.",
+     "start": {
+      "lines": [
+       "max_retry_count"
+      ],
+      "cursor": [
+       0,
+       14
+      ]
+     },
+     "goal": {
+      "lines": [
+       "max_retry_count"
+      ],
+      "cursor": [
+       0,
+       3
+      ],
+      "mode": "normal"
+     },
+     "solution": "F_F_",
+     "par": 4,
+     "hint": "`F_` twice. (`,` would reverse direction, not repeat it.)",
+     "note": ""
+    },
+    {
+     "id": "v05l5",
+     "title": "Delete to a character",
+     "kind": "drill",
+     "teach": "`dt)` — delete the arguments but keep the parentheses.",
+     "start": {
+      "lines": [
+       "call(a, b, c)"
+      ],
+      "cursor": [
+       0,
+       5
+      ]
+     },
+     "goal": {
+      "lines": [
+       "call()"
+      ],
+      "mode": "normal"
+     },
+     "solution": "dt)",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v05l6",
+     "title": "Change up to a comma",
+     "kind": "drill",
+     "teach": "`ct,` — replace the first argument.",
+     "start": {
+      "lines": [
+       "fn(old, keep, keep)"
+      ],
+      "cursor": [
+       0,
+       3
+      ]
+     },
+     "goal": {
+      "lines": [
+       "fn(new, keep, keep)"
+      ],
+      "mode": "normal"
+     },
+     "solution": "ct,new<Esc>",
+     "par": 7,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v05l7",
+     "title": "Delete through a character",
+     "kind": "drill",
+     "teach": "`df ` (with a space) deletes the word *and* its trailing space.",
+     "start": {
+      "lines": [
+       "drop this keep this"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "this keep this"
+      ],
+      "mode": "normal"
+     },
+     "solution": "df ",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v05l8",
+     "title": "Yank up to a character",
+     "kind": "drill",
+     "teach": "`yt:` copies everything before the colon, `A` appends, `p` pastes it. `t` stops *before* the target, so the colon itself is not copied.",
+     "start": {
+      "lines": [
+       "name: value"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "name: value -> name"
+      ],
+      "mode": "normal"
+     },
+     "solution": "yt:A -> <Esc>p",
+     "par": 10,
+     "hint": "`yt:` yanks `name`; `A -> ` appends; `Esc`; `p` puts.",
+     "note": ""
+    },
+    {
+     "id": "v05l9",
+     "title": "f or t?",
+     "kind": "quiz",
+     "teach": "Pick the right one.",
+     "question": "You are on the `l` of `logger.debug(payload)` and want to delete everything from there through the dot, leaving `debug(payload)`. Which?",
+     "options": [
+      "dt.",
+      "df.",
+      "dw",
+      "de"
+     ],
+     "answer": 1,
+     "why": "`df.` deletes *through* the `.` — inclusive. `dt.` would stop before it and leave `.debug(payload)`. `dw` stops at the `.` too (punctuation starts a new word)."
+    }
+   ],
+   "links": [
+    {
+     "track": "typing",
+     "level": "t09",
+     "note": "`dt)` and `ci{` need brackets — AltGr combos drilled in Typing Level 9."
+    }
+   ]
+  },
+  {
+   "id": "v06",
+   "n": 6,
+   "title": "Text Objects",
+   "goal": "Edit by structure, not by counting characters.",
+   "brief": "Text objects are the second half of Vim's grammar, and the half that\nactually changes how you work. Instead of *\"delete four characters\"* you say\n*\"delete the thing I am inside of\"*.\n\nThe pattern is `{operator}{i|a}{object}`:\n\n- `i` = **inner** — the contents\n- `a` = **around** — the contents *plus* the delimiters or trailing space\n\n| Object | Is |\n|---|---|\n| `w` `W` | word / WORD |\n| `\"` `'` `` ` `` | quoted string |\n| `(` `)` `b` | parentheses |\n| `[` `]` | square brackets |\n| `{` `}` `B` | braces |\n| `<` `>` | angle brackets |\n| `p` | paragraph |\n\n**The cursor does not need to be on the delimiter.** Anywhere inside works.\n`ci\"` from the middle of a string replaces the string. That property is what\nmakes text objects fast: no positioning step.\n\nThe four you will use every day: **`ciw` `ci\"` `ci(` `di{`**. Learn those and\nthe rest follow.",
+   "lessons": [
+    {
+     "id": "v06l1",
+     "title": "Inner word",
+     "kind": "drill",
+     "teach": "`ciw` from anywhere in the word. The cursor is mid-word — `cw` would only change the tail.",
+     "start": {
+      "lines": [
+       "rename_this_variable = 1"
+      ],
+      "cursor": [
+       0,
+       7
+      ]
+     },
+     "goal": {
+      "lines": [
+       "total = 1"
+      ],
+      "mode": "normal"
+     },
+     "solution": "ciwtotal<Esc>",
+     "par": 9,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v06l2",
+     "title": "Around word",
+     "kind": "drill",
+     "teach": "`daw` also eats the trailing space.",
+     "start": {
+      "lines": [
+       "remove extra word here"
+      ],
+      "cursor": [
+       0,
+       7
+      ]
+     },
+     "goal": {
+      "lines": [
+       "remove word here"
+      ],
+      "mode": "normal"
+     },
+     "solution": "daw",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v06l3",
+     "title": "Inner quotes",
+     "kind": "drill",
+     "teach": "`ci\"` from the middle of the string.",
+     "start": {
+      "lines": [
+       "path = \"/old/location\""
+      ],
+      "cursor": [
+       0,
+       12
+      ]
+     },
+     "goal": {
+      "lines": [
+       "path = \"/new\""
+      ],
+      "mode": "normal"
+     },
+     "solution": "ci\"/new<Esc>",
+     "par": 8,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v06l4",
+     "title": "Around quotes",
+     "kind": "drill",
+     "teach": "`da'` removes the string *and* its quotes.",
+     "start": {
+      "lines": [
+       "value = 'text' + rest"
+      ],
+      "cursor": [
+       0,
+       10
+      ]
+     },
+     "goal": {
+      "lines": [
+       "value =  + rest"
+      ],
+      "mode": "normal"
+     },
+     "solution": "da'",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v06l5",
+     "title": "Inner parentheses",
+     "kind": "drill",
+     "teach": "`ci(` replaces the argument list.",
+     "start": {
+      "lines": [
+       "result = compute(a, b, c)"
+      ],
+      "cursor": [
+       0,
+       19
+      ]
+     },
+     "goal": {
+      "lines": [
+       "result = compute(x)"
+      ],
+      "mode": "normal"
+     },
+     "solution": "ci(x<Esc>",
+     "par": 5,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v06l6",
+     "title": "Inner brackets",
+     "kind": "drill",
+     "teach": "`di[` empties a list literal — cursor inside the brackets.",
+     "start": {
+      "lines": [
+       "items = [1, 2, 3, 4]"
+      ],
+      "cursor": [
+       0,
+       12
+      ]
+     },
+     "goal": {
+      "lines": [
+       "items = []"
+      ],
+      "mode": "normal"
+     },
+     "solution": "di[",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v06l7",
+     "title": "Inner braces across lines",
+     "kind": "drill",
+     "teach": "Text objects span lines. Empty the dict body.",
+     "start": {
+      "lines": [
+       "cfg = {",
+       "    'a': 1,",
+       "    'b': 2,",
+       "}"
+      ],
+      "cursor": [
+       1,
+       4
+      ]
+     },
+     "goal": {
+      "lines": [
+       "cfg = {",
+       "}"
+      ],
+      "mode": "normal"
+     },
+     "solution": "di{",
+     "par": 3,
+     "hint": "`di{` from inside — the whole multi-line inner region goes.",
+     "note": ""
+    },
+    {
+     "id": "v06l8",
+     "title": "Around parentheses",
+     "kind": "drill",
+     "teach": "`da(` takes the parens too. Turn a call into a bare name.",
+     "start": {
+      "lines": [
+       "x = func(a, b)"
+      ],
+      "cursor": [
+       0,
+       10
+      ]
+     },
+     "goal": {
+      "lines": [
+       "x = func"
+      ],
+      "mode": "normal"
+     },
+     "solution": "da(",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v06l9",
+     "title": "Inner paragraph",
+     "kind": "drill",
+     "teach": "`dip` deletes the block of non-blank lines around the cursor.",
+     "start": {
+      "lines": [
+       "keep",
+       "",
+       "gone",
+       "gone",
+       "",
+       "keep"
+      ],
+      "cursor": [
+       2,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "keep",
+       "",
+       "",
+       "keep"
+      ],
+      "mode": "normal"
+     },
+     "solution": "dip",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v06l10",
+     "title": "Yank a string, paste it",
+     "kind": "drill",
+     "teach": "Combine: yank the inner string, then replace the second one with it.",
+     "start": {
+      "lines": [
+       "a = 'hola'",
+       "b = 'xxxx'"
+      ],
+      "cursor": [
+       0,
+       6
+      ]
+     },
+     "goal": {
+      "lines": [
+       "a = 'hola'",
+       "b = 'hola'"
+      ],
+      "mode": "normal"
+     },
+     "solution": "yi'jvi'p",
+     "par": 8,
+     "hint": "`yi'` yanks `hola`; `j` down; `vi'` selects the other string; `p` pastes over the selection. (`ci'` then `P` does *not* work — after `Esc` the cursor sits on the quote, not inside it.)",
+     "note": ""
+    }
+   ],
+   "links": [
+    {
+     "track": "typing",
+     "level": "t09",
+     "note": "Every bracket in these exercises is an AltGr combo on ES QWERTY."
+    },
+    {
+     "track": "python",
+     "level": "p03",
+     "note": "Lists, dicts and strings — the objects you just learned to edit."
+    }
+   ]
+  },
+  {
+   "id": "v07",
+   "n": 7,
+   "title": "Registers, Yank & Put",
+   "goal": "Vim's clipboard is 26 clipboards.",
+   "brief": "Every delete is a cut. `dd` puts the line in the **unnamed register** `\"`,\nwhich is also where `x`, `c`, `s` and `y` write. That is why beginners lose\ntheir yank: `yy` then `dd` then `p` pastes the *deleted* line.\n\n**Putting**\n\n| Key | Does |\n|---|---|\n| `p` | put after cursor (charwise) / below (linewise) |\n| `P` | put before cursor / above |\n\nWhether a put is charwise or linewise depends on how the text was captured, not\non how you paste it. `yy` then `p` always makes a new line; `yiw` then `p` always\ninserts inline.\n\n**Named registers** `a`–`z`: prefix any command with `\"{reg}`.\n\n```\n\"ayy    yank this line into register a\n\"ap     put register a\n\"Ayy    APPEND this line to register a   (capital = append)\n\"_dd    delete into the black hole — does not touch any register\n```\n\n**Read-only registers worth knowing:** `\"0` always holds the last *yank* (never\na delete) — so `\"0p` recovers the yank you thought you lost. `\"%` is the file\nname, `\".` the last inserted text, `\"+` the system clipboard.\n\nThe classic idioms: **`yyp`** duplicate a line, **`ddp`** swap two lines,\n**`xp`** swap two characters.",
+   "lessons": [
+    {
+     "id": "v07l1",
+     "title": "Duplicate a line",
+     "kind": "drill",
+     "teach": "`yyp` — yank the line, put it below.",
+     "start": {
+      "lines": [
+       "config = {}",
+       "other = 1"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "config = {}",
+       "config = {}",
+       "other = 1"
+      ],
+      "mode": "normal"
+     },
+     "solution": "yyp",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v07l2",
+     "title": "Swap two lines",
+     "kind": "drill",
+     "teach": "`ddp` — delete the line, put it back after the next one.",
+     "start": {
+      "lines": [
+       "second",
+       "first"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "first",
+       "second"
+      ],
+      "mode": "normal"
+     },
+     "solution": "ddp",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v07l3",
+     "title": "Swap two characters",
+     "kind": "drill",
+     "teach": "`xp` — the classic typo fix.",
+     "start": {
+      "lines": [
+       "teh cat"
+      ],
+      "cursor": [
+       0,
+       1
+      ]
+     },
+     "goal": {
+      "lines": [
+       "the cat"
+      ],
+      "mode": "normal"
+     },
+     "solution": "xp",
+     "par": 2,
+     "hint": "Cursor on `e`: `x` cuts it, `p` puts it after `h`.",
+     "note": ""
+    },
+    {
+     "id": "v07l4",
+     "title": "Move a line far away",
+     "kind": "drill",
+     "teach": "`dd` then navigate then `p`. Move the import to the top.",
+     "start": {
+      "lines": [
+       "def f():",
+       "    pass",
+       "import os"
+      ],
+      "cursor": [
+       2,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "import os",
+       "def f():",
+       "    pass"
+      ],
+      "mode": "normal"
+     },
+     "solution": "ddggP",
+     "par": 5,
+     "hint": "`dd`, `gg`, then `P` to put *above* line 1.",
+     "note": ""
+    },
+    {
+     "id": "v07l5",
+     "title": "Named register",
+     "kind": "drill",
+     "teach": "Yank the first line into register `a`, then put it at the bottom without disturbing anything you delete in between.",
+     "start": {
+      "lines": [
+       "header",
+       "body",
+       "junk"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "header",
+       "body",
+       "header"
+      ],
+      "mode": "normal"
+     },
+     "solution": "\"ayyjjdd\"ap",
+     "par": 11,
+     "hint": "`\"ayy` then `jj` then `dd` (clobbers the unnamed register, not `a`) then `\"ap`.",
+     "note": ""
+    },
+    {
+     "id": "v07l6",
+     "title": "The black hole register",
+     "kind": "drill",
+     "teach": "`\"_dd` deletes without touching any register — your yank survives.",
+     "start": {
+      "lines": [
+       "keep me",
+       "delete me",
+       "target"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "keep me",
+       "target",
+       "keep me"
+      ],
+      "mode": "normal"
+     },
+     "solution": "yyj\"_ddjp",
+     "par": 9,
+     "hint": "`yy` yanks line 1; `j` `\"_dd` deletes line 2 into the void; `j`? — you are now on `target`; `p` puts `keep me` below.",
+     "note": ""
+    },
+    {
+     "id": "v07l7",
+     "title": "Append to a register",
+     "kind": "drill",
+     "teach": "Capital register letters append. Collect both TODO lines into `a`.",
+     "start": {
+      "lines": [
+       "TODO one",
+       "noise",
+       "TODO two"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "TODO one",
+       "noise",
+       "TODO two",
+       "TODO one",
+       "TODO two"
+      ],
+      "mode": "normal"
+     },
+     "solution": "\"ayyjj\"Ayy\"ap",
+     "par": 13,
+     "hint": "`\"ayy`, `jj`, `\"Ayy` (append), then `\"ap` puts both lines.",
+     "note": ""
+    },
+    {
+     "id": "v07l8",
+     "title": "Where did my yank go?",
+     "kind": "quiz",
+     "teach": "The single most common register mistake.",
+     "question": "You do `yy` on line 1, then `dd` on line 5, then `p`. What gets pasted, and how do you paste what you actually wanted?",
+     "options": [
+      "Line 1; nothing to fix",
+      "Line 5; use `\"0p` to get the yanked line back",
+      "Line 5; the yank is gone forever",
+      "Both lines"
+     ],
+     "answer": 1,
+     "why": "`dd` overwrote the unnamed register. But register `0` only ever holds the last *yank*, so `\"0p` still has line 1. The habit that avoids the problem entirely: delete with `\"_d` when you are about to paste."
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "v08",
+   "n": 8,
+   "title": "Undo, Repeat & the Dot Formula",
+   "goal": "The most valuable key in Vim is `.`",
+   "brief": "`.` repeats the last **change** — not the last motion, not the last command.\nA change is anything that modified the buffer: `x`, `dw`, `ciwfoo<Esc>`, `A;<Esc>`.\n\n**The dot formula.** Structure edits so that:\n\n> one keystroke moves to the next target, one keystroke (`.`) makes the change.\n\n```\nGoal: add a semicolon to the end of every line\n  A;<Esc>      make the change on line 1\n  j.           down, repeat\n  j.  j.  j.   ...\n```\n\n```\nGoal: rename every `old` in the file\n  /old<CR>     search\n  cwnew<Esc>   change the first one\n  n.  n.  n.   next match, repeat\n```\n\nThis beats a macro for anything under ~8 repetitions and costs nothing to set up.\n\n**Undo**\n\n| Key | Does |\n|---|---|\n| `u` | undo one change |\n| `Ctrl-r` | redo |\n| `U` | undo all changes on the last line touched |\n\nUndo granularity is per *Insert session*, which is another reason to press `Esc`\noften: `iabc<Esc>` then `idef<Esc>` gives you two undo steps; typing `abcdef` in\none session gives you one.",
+   "lessons": [
+    {
+     "id": "v08l1",
+     "title": "Repeat a change",
+     "kind": "drill",
+     "teach": "Delete the first word, then repeat with `.`",
+     "start": {
+      "lines": [
+       "junk junk keep"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "keep"
+      ],
+      "mode": "normal"
+     },
+     "solution": "dw.",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v08l2",
+     "title": "The A; formula",
+     "kind": "drill",
+     "teach": "Add a semicolon to every line using `A;<Esc>` then `j.`",
+     "start": {
+      "lines": [
+       "a = 1",
+       "b = 2",
+       "c = 3"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "a = 1;",
+       "b = 2;",
+       "c = 3;"
+      ],
+      "mode": "normal"
+     },
+     "solution": "A;<Esc>j.j.",
+     "par": 7,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v08l3",
+     "title": "Dot with a text object",
+     "kind": "drill",
+     "teach": "`ciwX<Esc>` then move and `.` — the whole change repeats, including the typed text.",
+     "start": {
+      "lines": [
+       "aaa bbb ccc"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "xxx bbb xxx"
+      ],
+      "mode": "normal"
+     },
+     "solution": "ciwxxx<Esc>2w.",
+     "par": 10,
+     "hint": "`ciwxxx<Esc>` changes the first; `2w` to the third; `.` repeats.",
+     "note": ""
+    },
+    {
+     "id": "v08l4",
+     "title": "Dot with search",
+     "kind": "drill",
+     "teach": "`/bug<CR>` `ciwfix<Esc>` `n` `.`",
+     "start": {
+      "lines": [
+       "bug here",
+       "ok",
+       "bug there"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "fix here",
+       "ok",
+       "fix there"
+      ],
+      "mode": "normal"
+     },
+     "solution": "/bug\rciwfix<Esc>n.",
+     "par": 14,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v08l5",
+     "title": "Undo and redo",
+     "kind": "drill",
+     "teach": "Delete all three lines one at a time, undo twice, redo once. You should end with one line left.",
+     "start": {
+      "lines": [
+       "a",
+       "b",
+       "c"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "c"
+      ],
+      "mode": "normal"
+     },
+     "solution": "dddddduu<C-r>",
+     "par": 9,
+     "hint": "Three `dd` empties the buffer; two `u` bring back `b` and `c`; one `Ctrl-r` removes `b` again.",
+     "note": ""
+    },
+    {
+     "id": "v08l6",
+     "title": "Undo granularity",
+     "kind": "drill",
+     "teach": "Type `foo`, `Esc`, type `bar`, `Esc`, then a single `u`. Only `bar` should disappear.",
+     "start": {
+      "lines": [
+       ""
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "foo"
+      ],
+      "mode": "normal"
+     },
+     "solution": "ifoo<Esc>abar<Esc>u",
+     "par": 11,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v08l7",
+     "title": "What does . repeat?",
+     "kind": "quiz",
+     "teach": "Be precise about this.",
+     "question": "You press `dw`, then `j`, then `.`. What happens?",
+     "options": [
+      "Deletes a word, moves down, moves down again",
+      "Deletes a word, moves down, deletes another word",
+      "Deletes two words on the first line",
+      "Nothing — `.` needs an operator"
+     ],
+     "answer": 1,
+     "why": "`.` repeats the last *change*, and `j` is a motion, not a change. So the pending change is still `dw`. This is exactly why the dot formula works: motions are free, they never disturb the repeat."
+    }
+   ],
+   "links": [
+    {
+     "track": "python",
+     "level": "p05",
+     "note": "Refactoring loops into comprehensions is dot-formula work."
+    }
+   ]
+  },
+  {
+   "id": "v09",
+   "n": 9,
+   "title": "Visual Modes",
+   "goal": "See the selection before you act on it.",
+   "brief": "Visual mode inverts Vim's usual order: instead of `operator` then `motion`,\nyou select first and then apply.\n\n| Key | Mode |\n|---|---|\n| `v` | characterwise |\n| `V` | linewise |\n| `Ctrl-v` | **blockwise** — rectangular |\n| `gv` | reselect the last visual selection |\n| `o` | jump to the other end of the selection |\n\nIn Visual mode, operators apply to the selection: `d` `c` `y` `>` `<` `u` `U`\n`~` `J` `r`. Text objects work too: `vi(`, `vap`.\n\n**When to use Visual mode:** when the extent of the edit is easier to *see* than\nto *describe*. For anything you can name — a word, a string, a paragraph —\noperator + text object is faster and, crucially, repeatable with `.`.\n\n**Blockwise is the exception** — it does something no operator can:\n\n```\nCtrl-v  jjj  I# <Esc>     comment out four lines\nCtrl-v  jjj  $A,<Esc>     append a comma to four lines\nCtrl-v  jjj  d            delete a column\n```\n\n`I` and `A` in blockwise mode insert on *every* line of the block once you press\n`Esc`. That is the killer feature.",
+   "lessons": [
+    {
+     "id": "v09l1",
+     "title": "Characterwise select and delete",
+     "kind": "drill",
+     "teach": "`v` then a motion, then `d`.",
+     "start": {
+      "lines": [
+       "delete these keep"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "keep"
+      ],
+      "mode": "normal"
+     },
+     "solution": "v2eld",
+     "par": 5,
+     "hint": "`v2e` selects `delete these`; `l` extends over the space; `d`.",
+     "note": ""
+    },
+    {
+     "id": "v09l2",
+     "title": "Linewise select",
+     "kind": "drill",
+     "teach": "`V` then `j` then `d`.",
+     "start": {
+      "lines": [
+       "a",
+       "b",
+       "c",
+       "d"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "c",
+       "d"
+      ],
+      "mode": "normal"
+     },
+     "solution": "Vjd",
+     "par": 3,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v09l3",
+     "title": "Uppercase a selection",
+     "kind": "drill",
+     "teach": "`viwU` — select the inner word, uppercase it.",
+     "start": {
+      "lines": [
+       "make this loud"
+      ],
+      "cursor": [
+       0,
+       5
+      ]
+     },
+     "goal": {
+      "lines": [
+       "make THIS loud"
+      ],
+      "mode": "normal"
+     },
+     "solution": "viwU",
+     "par": 4,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v09l4",
+     "title": "Reselect with gv",
+     "kind": "drill",
+     "teach": "Not everything needs gv, but know it exists. Indent, then indent again by reselecting.",
+     "start": {
+      "lines": [
+       "x",
+       "y"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "        x",
+       "        y"
+      ],
+      "mode": "normal"
+     },
+     "solution": "Vj>gv>",
+     "par": 6,
+     "hint": "`Vj>` indents; `gv` reselects; `>` again.",
+     "note": ""
+    },
+    {
+     "id": "v09l5",
+     "title": "Block comment",
+     "kind": "drill",
+     "teach": "`Ctrl-v` `jj` `I# ` `Esc` — comment three lines at once.",
+     "start": {
+      "lines": [
+       "a = 1",
+       "b = 2",
+       "c = 3"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "# a = 1",
+       "# b = 2",
+       "# c = 3"
+      ],
+      "mode": "normal"
+     },
+     "solution": "<C-v>jjI# <Esc>",
+     "par": 7,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v09l6",
+     "title": "Block append",
+     "kind": "drill",
+     "teach": "`Ctrl-v` `jj` `$` `A,` `Esc` — add a trailing comma to each line.",
+     "start": {
+      "lines": [
+       "'a'",
+       "'b'",
+       "'c'"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "'a',",
+       "'b',",
+       "'c',"
+      ],
+      "mode": "normal"
+     },
+     "solution": "<C-v>jj$A,<Esc>",
+     "par": 7,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v09l7",
+     "title": "Delete a column",
+     "kind": "drill",
+     "teach": "`Ctrl-v` `jj` `d` removes the leading `- ` bullet from each line.",
+     "start": {
+      "lines": [
+       "- one",
+       "- two",
+       "- three"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "one",
+       "two",
+       "three"
+      ],
+      "mode": "normal"
+     },
+     "solution": "<C-v>jjld",
+     "par": 5,
+     "hint": "`<C-v>` `jj` `l` widens the block to two columns, `d`.",
+     "note": ""
+    },
+    {
+     "id": "v09l8",
+     "title": "Join a selection",
+     "kind": "drill",
+     "teach": "`VjjJ` joins the selected lines into one.",
+     "start": {
+      "lines": [
+       "one",
+       "two",
+       "three"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "one two three"
+      ],
+      "mode": "normal"
+     },
+     "solution": "VjjJ",
+     "par": 4,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v09l9",
+     "title": "Visual or operator?",
+     "kind": "quiz",
+     "teach": "A judgement call worth getting right.",
+     "question": "You need to delete the contents of a string 40 times across a file. Which approach is better?",
+     "options": [
+      "`vi\"d` each time — you can see what you are selecting",
+      "`di\"` once, then `n.` — because `.` repeats it and Visual mode selections are not repeatable in the same way",
+      "Select all with `ggVG` and retype",
+      "Use the mouse"
+     ],
+     "answer": 1,
+     "why": "Operator + text object produces a repeatable change. A visual selection followed by `d` is repeatable with `.` only over the *same size* region, which is rarely what you want. Reach for Visual mode when the region is irregular; reach for text objects when it has a name."
+    }
+   ],
+   "links": [
+    {
+     "track": "typing",
+     "level": "t08",
+     "note": "`Ctrl-v` and `|` chaining live on the AltGr row."
+    }
+   ]
+  },
+  {
+   "id": "v10",
+   "n": 10,
+   "title": "Ex Commands & Ranges",
+   "goal": "`:` is a second, line-oriented language.",
+   "brief": "Everything after `:` operates on **lines**, addressed by a range.\n\n**Ranges**\n\n| Range | Means |\n|---|---|\n| *(none)* | the current line |\n| `%` | the whole file |\n| `1,10` | lines 1 to 10 |\n| `.,$` | current line to end |\n| `'<,'>` | the last visual selection (Vim types this for you after `V`) |\n| `.,+3` | current line and the next three |\n\n**Substitute** — `:{range}s/{pattern}/{replacement}/{flags}`\n\n```\n:s/old/new/           first match on this line\n:%s/old/new/g         every match in the file\n:%s/old/new/gc        ...with confirmation\n:%s/\\<log\\>/logger/g   whole word only\n:'<,'>s/^/# /         prefix the selection with #\n```\n\nFlags: `g` all matches on the line, `c` confirm, `i` ignore case, `e` no error\nif not found.\n\n**Global** — `:{range}g/{pattern}/{command}` runs an ex command on every matching\nline. This is the most powerful thing in Vim, and almost nobody learns it.\n\n```\n:g/TODO/d             delete every line containing TODO\n:g!/def /d            delete every line NOT containing 'def '   (also :v/def /d)\n:g/^$/d               squeeze out blank lines\n:g/import/normal A  # checked      run normal-mode keys on matching lines\n```\n\n**`:normal`** runs Normal-mode keystrokes over a range — the bridge between the\ntwo languages. `:%normal A;` appends a semicolon to every line in the file.\n\nOther essentials: `:m` move lines, `:t` (or `:co`) copy lines, `:sort`,\n`:{n}` jump to line n, `:w` write, `:q` quit, `:wq`/`:x` both.",
+   "lessons": [
+    {
+     "id": "v10l1",
+     "title": "Substitute on one line",
+     "kind": "drill",
+     "teach": "`:s/old/new/`",
+     "start": {
+      "lines": [
+       "path = old_dir + name"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "path = new_dir + name"
+      ],
+      "mode": "normal"
+     },
+     "solution": ":s/old/new/\r",
+     "par": 12,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v10l2",
+     "title": "Substitute everywhere",
+     "kind": "drill",
+     "teach": "`:%s/.../.../g` — every occurrence in the file.",
+     "start": {
+      "lines": [
+       "foo bar foo",
+       "baz foo"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "qux bar qux",
+       "baz qux"
+      ],
+      "mode": "normal"
+     },
+     "solution": ":%s/foo/qux/g\r",
+     "par": 14,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v10l3",
+     "title": "Whole-word substitution",
+     "kind": "drill",
+     "teach": "`\\<` and `\\>` anchor word boundaries — without them `log` also matches inside `login`.",
+     "start": {
+      "lines": [
+       "log(x)",
+       "login(y)",
+       "log(z)"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "logger(x)",
+       "login(y)",
+       "logger(z)"
+      ],
+      "mode": "normal"
+     },
+     "solution": ":%s/\\<log\\>/logger/g\r",
+     "par": 21,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v10l4",
+     "title": "Delete matching lines",
+     "kind": "drill",
+     "teach": "`:g/pattern/d`",
+     "start": {
+      "lines": [
+       "keep 1",
+       "# comment",
+       "keep 2",
+       "# another"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "keep 1",
+       "keep 2"
+      ],
+      "mode": "normal"
+     },
+     "solution": ":g/^#/d\r",
+     "par": 8,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v10l5",
+     "title": "Keep only matching lines",
+     "kind": "drill",
+     "teach": "`:v/pattern/d` (inverse global) deletes everything that does *not* match.",
+     "start": {
+      "lines": [
+       "def a():",
+       "    pass",
+       "def b():",
+       "    pass"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "def a():",
+       "def b():"
+      ],
+      "mode": "normal"
+     },
+     "solution": ":v/def/d\r",
+     "par": 9,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v10l6",
+     "title": "Squeeze blank lines",
+     "kind": "drill",
+     "teach": "`:g/^$/d` removes every empty line.",
+     "start": {
+      "lines": [
+       "a",
+       "",
+       "b",
+       "",
+       "",
+       "c"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "a",
+       "b",
+       "c"
+      ],
+      "mode": "normal"
+     },
+     "solution": ":g/^$/d\r",
+     "par": 8,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v10l7",
+     "title": "Range on a selection",
+     "kind": "drill",
+     "teach": "Select two lines with `Vj`, then `:` — Vim inserts `'<,'>` for you. Comment them.",
+     "start": {
+      "lines": [
+       "a = 1",
+       "b = 2",
+       "c = 3"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "# a = 1",
+       "# b = 2",
+       "c = 3"
+      ],
+      "mode": "normal"
+     },
+     "solution": "Vj:s/^/# /\r",
+     "par": 11,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v10l8",
+     "title": "normal over a range",
+     "kind": "drill",
+     "teach": "`:%normal A;` runs `A;` on every line.",
+     "start": {
+      "lines": [
+       "a = 1",
+       "b = 2"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "a = 1;",
+       "b = 2;"
+      ],
+      "mode": "normal"
+     },
+     "solution": ":%normal A;\r",
+     "par": 12,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v10l9",
+     "title": "Move a line",
+     "kind": "drill",
+     "teach": "`:m0` moves the current line to the top; `:m$` to the bottom.",
+     "start": {
+      "lines": [
+       "body",
+       "header"
+      ],
+      "cursor": [
+       1,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "header",
+       "body"
+      ],
+      "mode": "normal"
+     },
+     "solution": ":m0\r",
+     "par": 4,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v10l10",
+     "title": "Sort a block",
+     "kind": "drill",
+     "teach": "`:%sort` — and `:sort u` also removes duplicates.",
+     "start": {
+      "lines": [
+       "pear",
+       "apple",
+       "pear",
+       "fig"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "apple",
+       "fig",
+       "pear"
+      ],
+      "mode": "normal"
+     },
+     "solution": ":%sort u\r",
+     "par": 9,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v10l11",
+     "title": "g plus normal",
+     "kind": "quiz",
+     "teach": "The combination that replaces most macros.",
+     "question": "Which command appends `  # checked` to every line containing `import`?",
+     "options": [
+      ":%s/import/  # checked/g",
+      ":g/import/normal A  # checked",
+      ":normal A  # checked",
+      ":g/import/A  # checked"
+     ],
+     "answer": 1,
+     "why": "`:g/pat/normal {keys}` runs Normal-mode keystrokes on each matching line — the full power of Normal mode applied selectively. Option 1 would *replace* the word `import`; option 4 is not valid ex syntax."
+    }
+   ],
+   "links": [
+    {
+     "track": "typing",
+     "level": "t10",
+     "note": "Typing Level 10 drills these exact ex command lines."
+    }
+   ]
+  },
+  {
+   "id": "v11",
+   "n": 11,
+   "title": "Marks, Search & Macros",
+   "goal": "Record once, replay a hundred times.",
+   "brief": "**Marks** — `m{a-z}` sets a mark, `` `{a-z} `` jumps to it (exact position),\n`'{a-z}` jumps to its line. Automatic marks worth knowing: `` `` `` is where you\nwere before the last jump (press it twice to bounce), `` `. `` is the last edit,\n`` `^ `` is where you last left Insert mode.\n\n**Search** — `/pattern` forward, `?pattern` backward, `n`/`N` next/previous,\n`*` searches for the word under the cursor. Search is also a motion: `d/END<CR>`\ndeletes up to the next `END`.\n\n**Macros** — a macro is just a register holding keystrokes.\n\n```\nqa          start recording into register a\n...         do the edit, ending in a repeatable position\nq           stop recording\n@a          replay\n10@a        replay ten times\n@@          replay the last macro again\n```\n\n**Three rules for macros that don't break:**\n\n1. **Start from a predictable position** — begin with `0` or `^`.\n2. **End positioned for the next iteration** — usually with `j`.\n3. **Use relative motions**, never absolute line numbers.\n\nA macro that fails partway through simply stops (Vim aborts a count-repeated\nmacro on the first error), which is a feature: `100@a` on a 12-line file does\n12 iterations and stops. So overshoot deliberately.\n\n**Macro or dot?** If the repeated edit is a single change, use `.`. If it is a\n*sequence* — move, edit, move, edit — record a macro.",
+   "lessons": [
+    {
+     "id": "v11l1",
+     "title": "Set and jump to a mark",
+     "kind": "drill",
+     "teach": "Mark the first junk line with `ma`, jump to the end, delete back to the mark. `d'a` is linewise and includes both ends.",
+     "start": {
+      "lines": [
+       "start",
+       "junk",
+       "junk",
+       "junk"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "start"
+      ],
+      "mode": "normal"
+     },
+     "solution": "jmaGd'a",
+     "par": 7,
+     "hint": "`ma` marks; `G` last line; `d'a` deletes linewise back to mark `a` — note `'a` is linewise, `` `a `` would be charwise.",
+     "note": ""
+    },
+    {
+     "id": "v11l2",
+     "title": "Search as a motion",
+     "kind": "drill",
+     "teach": "`d/END<CR>` deletes from the cursor up to (not including) `END`.",
+     "start": {
+      "lines": [
+       "keep DELETE THIS END rest"
+      ],
+      "cursor": [
+       0,
+       5
+      ]
+     },
+     "goal": {
+      "lines": [
+       "keep END rest"
+      ],
+      "mode": "normal"
+     },
+     "solution": "d/END\r",
+     "par": 6,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v11l3",
+     "title": "Star search",
+     "kind": "drill",
+     "teach": "`*` jumps to the next occurrence of the word under the cursor. Change the second `total`.",
+     "start": {
+      "lines": [
+       "total = 1",
+       "x = 2",
+       "total = 3"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "total = 1",
+       "x = 2",
+       "sum = 3"
+      ],
+      "mode": "normal"
+     },
+     "solution": "*ciwsum<Esc>",
+     "par": 8,
+     "hint": "`*` searches for the word under the cursor and jumps to the next match — line 3.",
+     "note": ""
+    },
+    {
+     "id": "v11l4",
+     "title": "Record a simple macro",
+     "kind": "drill",
+     "teach": "Record `A;<Esc>j` into register `q`, then replay it twice.",
+     "start": {
+      "lines": [
+       "a",
+       "b",
+       "c"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "a;",
+       "b;",
+       "c;"
+      ],
+      "mode": "normal"
+     },
+     "solution": "qqA;<Esc>jq2@q",
+     "par": 10,
+     "hint": "`qq` start, `A;<Esc>j` the edit, `q` stop — that already did line 1. Then `2@q` for the other two.",
+     "note": ""
+    },
+    {
+     "id": "v11l5",
+     "title": "A macro with structure",
+     "kind": "drill",
+     "teach": "Turn each line into a dict entry. Record: `I'` `Esc` `A': 0,` `Esc` `j`",
+     "start": {
+      "lines": [
+       "alpha",
+       "beta"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "'alpha': 0,",
+       "'beta': 0,"
+      ],
+      "mode": "normal"
+     },
+     "solution": "qwI'<Esc>A': 0,<Esc>jq@w",
+     "par": 16,
+     "hint": "`qw` … `q` records and runs it once on line 1; `@w` does line 2.",
+     "note": ""
+    },
+    {
+     "id": "v11l6",
+     "title": "Overshoot deliberately",
+     "kind": "drill",
+     "teach": "Record `I- <Esc>j`, then replay it **50** times on a 4-line buffer. The macro aborts by itself when `j` fails on the last line, so over-counting is free — you never need to know how many lines there are.",
+     "start": {
+      "lines": [
+       "x",
+       "x",
+       "x",
+       "x"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "- x",
+       "- x",
+       "- x",
+       "- x"
+      ],
+      "mode": "normal"
+     },
+     "solution": "qaI- <Esc>jq50@a",
+     "par": 12,
+     "hint": "`qa` `I- ` `Esc` `j` `q` records and already runs iteration 1; `50@a` does the rest and stops on the error.",
+     "note": ""
+    },
+    {
+     "id": "v11l7",
+     "title": "Recursive-style repeat",
+     "kind": "drill",
+     "teach": "Apply the same change down a file with `@@`.",
+     "start": {
+      "lines": [
+       "a",
+       "b",
+       "c",
+       "d"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "-a",
+       "-b",
+       "-c",
+       "-d"
+      ],
+      "mode": "normal"
+     },
+     "solution": "qzI-<Esc>jq@z@@@@",
+     "par": 13,
+     "hint": "`qz…q` runs once, `@z` again, then `@@` twice. `@@` replays whichever macro you ran last, so you stop having to name the register.",
+     "note": ""
+    },
+    {
+     "id": "v11l8",
+     "title": "Why did my macro break?",
+     "kind": "quiz",
+     "teach": "The most common macro bug.",
+     "question": "You record a macro that starts by pressing `w` to get to the second word. It works on line 1 and mangles line 4. Most likely cause?",
+     "options": [
+      "Register overflow",
+      "Line 4 has different structure, so `w` lands somewhere else — the macro used a fragile motion instead of an anchored one",
+      "You need to re-record after every line",
+      "Macros only work on 3 lines"
+     ],
+     "answer": 1,
+     "why": "Macros are literal keystroke replays with no awareness of content. Anchor them: start with `0` or `^`, and prefer `f{char}` or `/pattern` over counting words, so the motion adapts to each line."
+    }
+   ],
+   "links": []
+  },
+  {
+   "id": "v12",
+   "n": 12,
+   "title": "Neovim in Practice",
+   "goal": "Config, LSP, buffers and windows. Making it yours.",
+   "brief": "You now know Vim. This level is about **Neovim** specifically — the parts\nthat are not in vi.\n\n**Buffers, windows, tabs** — three different things, and confusing them is the\nusual source of pain.\n\n- A **buffer** is a file loaded in memory. `:ls` lists them, `:b {name}` switches,\n  `:bd` closes.\n- A **window** is a viewport onto a buffer. `:split` / `:vsplit`,\n  `Ctrl-w h/j/k/l` to move between them, `Ctrl-w q` to close.\n- A **tab** is a layout of windows. Most people who want tabs actually want\n  buffers.\n\n**Configuration is Lua.** `~/.config/nvim/init.lua`:\n\n```lua\nvim.opt.number = true            -- :set number\nvim.opt.relativenumber = true    -- motions become countable at a glance\nvim.opt.expandtab = true\nvim.opt.shiftwidth = 4\nvim.g.mapleader = ' '            -- set BEFORE loading plugins\n\nvim.keymap.set('n', '<leader>w', '<cmd>write<cr>', { desc = 'Save' })\nvim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>')\nvim.keymap.set('v', '<', '<gv')  -- keep the selection after indenting\n```\n\n`relativenumber` deserves a special mention: it turns \"delete the next six\nlines\" from counting into reading. It is the single highest-value option in the\nlist.\n\n**LSP** — Neovim speaks the Language Server Protocol natively. With a Python\nserver (`pyright` or `ruff` + `basedpyright`) attached you get, in Normal mode:\n\n| Key | Does |\n|---|---|\n| `gd` | go to definition |\n| `gr` | list references |\n| `K` | hover documentation |\n| `<leader>rn` | rename symbol across the project |\n| `<leader>ca` | code action (quick fix) |\n| `[d` `]d` | previous / next diagnostic |\n\n`<leader>rn` is worth the whole setup on its own: a semantic rename beats\n`:%s/old/new/g` because it will not touch a string that happens to contain the\nsame characters.\n\n**Plugin manager** — `lazy.nvim` is the current default. A minimal, real\n`init.lua` is about 40 lines and gives you fuzzy finding (telescope), treesitter\nhighlighting, and LSP.\n\n**How to keep improving:** `:help {topic}` is genuinely excellent — `:help\ntext-objects`, `:help :g`, `:help registers`. And `:checkhealth` when something\nis broken.",
+   "lessons": [
+    {
+     "id": "v12l1",
+     "title": "Edit your options",
+     "kind": "drill",
+     "teach": "Add `relativenumber` below `number` in a config file.",
+     "start": {
+      "lines": [
+       "vim.opt.number = true",
+       "vim.opt.expandtab = true"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "vim.opt.number = true",
+       "vim.opt.relativenumber = true",
+       "vim.opt.expandtab = true"
+      ],
+      "mode": "normal"
+     },
+     "solution": "yypfnciwrelativenumber<Esc>",
+     "par": 23,
+     "hint": "`yyp` duplicates the line but leaves the cursor in column 0, so `ciw` there would change `vim`. Press `fn` first, to land on `number`.",
+     "note": ""
+    },
+    {
+     "id": "v12l2",
+     "title": "Add a keymap",
+     "kind": "drill",
+     "teach": "Append a leader mapping after the existing one.",
+     "start": {
+      "lines": [
+       "vim.keymap.set('n', '<leader>w', '<cmd>write<cr>')"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "vim.keymap.set('n', '<leader>w', '<cmd>write<cr>')",
+       "vim.keymap.set('n', '<leader>q', '<cmd>quit<cr>')"
+      ],
+      "mode": "normal"
+     },
+     "solution": "yypf>lrq:s/write/quit/\r",
+     "par": 23,
+     "hint": "`yyp` duplicates; `f>` lands on the `>` of `<leader>`, `l` steps onto the `w`, `rq` replaces it; then `:s/write/quit/` for the command.",
+     "note": ""
+    },
+    {
+     "id": "v12l3",
+     "title": "Fix a Lua table",
+     "kind": "drill",
+     "teach": "Turn the single-line table into the idiomatic multi-line form by replacing the contents.",
+     "start": {
+      "lines": [
+       "local opts = { noremap = true, silent = true }"
+      ],
+      "cursor": [
+       0,
+       15
+      ]
+     },
+     "goal": {
+      "lines": [
+       "local opts = { silent = true }"
+      ],
+      "mode": "normal"
+     },
+     "solution": "ci{ silent = true <Esc>",
+     "par": 19,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v12l4",
+     "title": "Comment out a plugin",
+     "kind": "drill",
+     "teach": "Block-comment three lines of a lazy.nvim spec with `Ctrl-v`.",
+     "start": {
+      "lines": [
+       "{ 'nvim-telescope/telescope.nvim',",
+       "  dependencies = { 'nvim-lua/plenary.nvim' },",
+       "  config = true },"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "-- { 'nvim-telescope/telescope.nvim',",
+       "--   dependencies = { 'nvim-lua/plenary.nvim' },",
+       "--   config = true },"
+      ],
+      "mode": "normal"
+     },
+     "solution": "<C-v>jjI-- <Esc>",
+     "par": 8,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v12l5",
+     "title": "Refactor with :normal",
+     "kind": "drill",
+     "teach": "Convert every `vim.opt.X = true` line to `vim.opt.X = false` with one ex command.",
+     "start": {
+      "lines": [
+       "vim.opt.number = true",
+       "vim.opt.wrap = true",
+       "vim.opt.list = true"
+      ],
+      "cursor": [
+       0,
+       0
+      ]
+     },
+     "goal": {
+      "lines": [
+       "vim.opt.number = false",
+       "vim.opt.wrap = false",
+       "vim.opt.list = false"
+      ],
+      "mode": "normal"
+     },
+     "solution": ":%s/true/false/g\r",
+     "par": 17,
+     "hint": "",
+     "note": ""
+    },
+    {
+     "id": "v12l6",
+     "title": "Buffers vs windows",
+     "kind": "quiz",
+     "teach": "Get the mental model right.",
+     "question": "You have three files open and want to see two of them side by side. What do you actually need?",
+     "options": [
+      "Three tabs",
+      "Two windows showing two of the three buffers",
+      "Three windows",
+      "Two buffers — the third must be closed"
+     ],
+     "answer": 1,
+     "why": "Buffers are the files; windows are the viewports. Three buffers can coexist with any number of windows, including one. `:vsplit` then `:b {other}` gives you the side-by-side view without closing anything."
+    },
+    {
+     "id": "v12l7",
+     "title": "Rename correctly",
+     "kind": "quiz",
+     "teach": "The last habit to build.",
+     "question": "You need to rename the function `load` to `load_config` across a Python project. Which is safest?",
+     "options": [
+      ":%s/load/load_config/g",
+      ":%s/\\<load\\>/load_config/g on every file",
+      "LSP `<leader>rn` on the symbol",
+      "Manual search and replace with confirmation"
+     ],
+     "answer": 2,
+     "why": "An LSP rename understands scope: it will not rename a *different* `load` in another class, nor a `load` inside a string or comment. The regex options either over-match (option 1 hits `download`) or cannot distinguish two unrelated symbols with the same name."
+    }
+   ],
+   "links": [
+    {
+     "track": "typing",
+     "level": "t11",
+     "note": "Typing Level 11 drills Lua config syntax."
+    },
+    {
+     "track": "python",
+     "level": "p12",
+     "note": "Tooling and packaging — the Python side of the same workflow."
+    }
+   ]
+  }
+ ]
+}

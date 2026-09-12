@@ -1,0 +1,16 @@
+[project]
+name = "triada"
+version = "1.0.0"
+description = "Interconnected trainer for touch typing, Neovim and Python (ES QWERTY)"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+triada = "triada.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["triada"]

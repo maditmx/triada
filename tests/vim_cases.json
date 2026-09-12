@@ -1,0 +1,936 @@
+[
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "dw",
+  "lines_out": [
+   "world"
+  ],
+  "cursor_out": [
+   0,
+   0
+  ]
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "de",
+  "lines_out": [
+   " world"
+  ],
+  "cursor_out": [
+   0,
+   0
+  ]
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   6
+  ],
+  "keys": "daw",
+  "lines_out": [
+   "hello"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   6
+  ],
+  "keys": "diw",
+  "lines_out": [
+   "hello "
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "x",
+  "lines_out": [
+   "ello world"
+  ],
+  "cursor_out": [
+   0,
+   0
+  ]
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "3x",
+  "lines_out": [
+   "lo world"
+  ],
+  "cursor_out": [
+   0,
+   0
+  ]
+ },
+ {
+  "lines": [
+   "hello"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "cwbye<Esc>",
+  "lines_out": [
+   "bye"
+  ],
+  "cursor_out": [
+   0,
+   2
+  ]
+ },
+ {
+  "lines": [
+   "foo(bar, baz)"
+  ],
+  "cursor": [
+   0,
+   5
+  ],
+  "keys": "ci(x<Esc>",
+  "lines_out": [
+   "foo(x)"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "foo(bar, baz)"
+  ],
+  "cursor": [
+   0,
+   5
+  ],
+  "keys": "da(",
+  "lines_out": [
+   "foo"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "x = \"hola\""
+  ],
+  "cursor": [
+   0,
+   6
+  ],
+  "keys": "ci\"adios<Esc>",
+  "lines_out": [
+   "x = \"adios\""
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "one",
+   "two",
+   "three"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "dd",
+  "lines_out": [
+   "two",
+   "three"
+  ],
+  "cursor_out": [
+   0,
+   0
+  ]
+ },
+ {
+  "lines": [
+   "one",
+   "two",
+   "three"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "2dd",
+  "lines_out": [
+   "three"
+  ],
+  "cursor_out": [
+   0,
+   0
+  ]
+ },
+ {
+  "lines": [
+   "one",
+   "two",
+   "three"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "yyp",
+  "lines_out": [
+   "one",
+   "one",
+   "two",
+   "three"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "one",
+   "two"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "ddp",
+  "lines_out": [
+   "two",
+   "one"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "ab"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "xp",
+  "lines_out": [
+   "ba"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "one",
+   "two"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "J",
+  "lines_out": [
+   "one two"
+  ],
+  "cursor_out": [
+   0,
+   3
+  ]
+ },
+ {
+  "lines": [
+   "one",
+   "two"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "gJ",
+  "lines_out": [
+   "onetwo"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "rx",
+  "lines_out": [
+   "xello"
+  ],
+  "cursor_out": [
+   0,
+   0
+  ]
+ },
+ {
+  "lines": [
+   "hello"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "3rx",
+  "lines_out": [
+   "xxxlo"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "~",
+  "lines_out": [
+   "Hello"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "gUiw",
+  "lines_out": [
+   "HELLO world"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "HELLO"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "guu",
+  "lines_out": [
+   "hello"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "a",
+   "b",
+   "c"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "GdG",
+  "lines_out": [
+   "a",
+   "b"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "a",
+   "b",
+   "c"
+  ],
+  "cursor": [
+   2,
+   0
+  ],
+  "keys": "ggdG",
+  "lines_out": [
+   ""
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "$",
+  "lines_out": [
+   "hello world"
+  ],
+  "cursor_out": [
+   0,
+   10
+  ]
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "f ",
+  "lines_out": [
+   "hello world"
+  ],
+  "cursor_out": [
+   0,
+   5
+  ]
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "dfo",
+  "lines_out": [
+   " world"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "dtw",
+  "lines_out": [
+   "world"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "int x = 1;"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "A // ok<Esc>",
+  "lines_out": [
+   "int x = 1; // ok"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "int x = 1;"
+  ],
+  "cursor": [
+   0,
+   5
+  ],
+  "keys": "I// <Esc>",
+  "lines_out": [
+   "// int x = 1;"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "a"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "ob<Esc>",
+  "lines_out": [
+   "a",
+   "b"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "a"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "Ob<Esc>",
+  "lines_out": [
+   "b",
+   "a"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "one two three"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "wdw",
+  "lines_out": [
+   "one three"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "one",
+   "two"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "yyjp",
+  "lines_out": [
+   "one",
+   "two",
+   "one"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "foo bar"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "veU",
+  "lines_out": [
+   "FOO bar"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "foo bar"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "vey$p",
+  "lines_out": [
+   "foo barfoo"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "a b c d"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "d2w",
+  "lines_out": [
+   "c d"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "x=1"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "ciwy<Esc>",
+  "lines_out": [
+   "y=1"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "u",
+  "lines_out": [
+   "hello"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "xxu",
+  "lines_out": [
+   "ello"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "xxu\u0012",
+  "lines_out": [
+   "llo"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "aaa",
+   "bbb"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "qaxq j@a",
+  "lines_out": [
+   "aa",
+   "bb"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "one two"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "dw.",
+  "lines_out": [
+   ""
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "foo",
+   "foo",
+   "foo"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": ":%s/foo/bar/g\r",
+  "lines_out": [
+   "bar",
+   "bar",
+   "bar"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "a1",
+   "b2",
+   "a3"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": ":g/a/d\r",
+  "lines_out": [
+   "b2"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "z",
+   "y",
+   "x"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": ":%sort\r",
+  "lines_out": [
+   "x",
+   "y",
+   "z"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "hello world"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "/world\r",
+  "lines_out": [
+   "hello world"
+  ],
+  "cursor_out": [
+   0,
+   6
+  ]
+ },
+ {
+  "lines": [
+   "    indented"
+  ],
+  "cursor": [
+   0,
+   4
+  ],
+  "keys": "^",
+  "lines_out": [
+   "    indented"
+  ],
+  "cursor_out": [
+   0,
+   4
+  ]
+ },
+ {
+  "lines": [
+   "    indented"
+  ],
+  "cursor": [
+   0,
+   4
+  ],
+  "keys": "0",
+  "lines_out": [
+   "    indented"
+  ],
+  "cursor_out": [
+   0,
+   0
+  ]
+ },
+ {
+  "lines": [
+   "a",
+   "b",
+   "c"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "Vjd",
+  "lines_out": [
+   "c"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "abc"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": ">>",
+  "lines_out": [
+   "    abc"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "    abc"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "<<",
+  "lines_out": [
+   "abc"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "def f():",
+   "    pass"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "jdd",
+  "lines_out": [
+   "def f():"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "x = [1, 2, 3]"
+  ],
+  "cursor": [
+   0,
+   5
+  ],
+  "keys": "di[",
+  "lines_out": [
+   "x = []"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "{a: 1}"
+  ],
+  "cursor": [
+   0,
+   1
+  ],
+  "keys": "ci{k<Esc>",
+  "lines_out": [
+   "{k}"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "(a(b)c)"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "%",
+  "lines_out": [
+   "(a(b)c)"
+  ],
+  "cursor_out": [
+   0,
+   6
+  ]
+ },
+ {
+  "lines": [
+   "one",
+   "",
+   "two"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "}",
+  "lines_out": [
+   "one",
+   "",
+   "two"
+  ],
+  "cursor_out": [
+   1,
+   0
+  ]
+ },
+ {
+  "lines": [
+   "mark me",
+   "x",
+   "y"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "majjd`a",
+  "lines_out": [
+   "y"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "abc def"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "\"ayw\"ap",
+  "lines_out": [
+   "aabc bc def"
+  ],
+  "cursor_out": null
+ },
+ {
+  "lines": [
+   "a",
+   "b"
+  ],
+  "cursor": [
+   0,
+   0
+  ],
+  "keys": "majd'a",
+  "lines_out": [
+   ""
+  ],
+  "cursor_out": null
+ }
+]

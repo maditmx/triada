@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Run Tríada from a checkout without installing anything.
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export PYTHONPATH="$here/cli:$PYTHONPATH"
+exec python3 -m triada "$@" 
