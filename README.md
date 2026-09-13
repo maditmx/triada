@@ -162,6 +162,9 @@ cli/triada/     the terminal app
   keyboard.py   ES QWERTY layout knowledge
   data.py       curriculum loading, progress persistence
 
+cli-rs/         a Rust/ratatui port of the terminal app — same curriculum and
+                progress file, kept alongside cli/ rather than replacing it
+
 tools/          curriculum generators + the validator
 tests/          engine tests, JS/Python parity, TUI render test
 ```
@@ -171,7 +174,8 @@ generated JSON directly works too, but a regeneration will overwrite it.
 
 ```bash
 make build   # regenerate curriculum + web bundle
-make test    # 60 engine cases, 249 lessons validated, JS parity, TUI render
+make test    # 60 engine cases, 249 lessons validated, JS parity, TUI render, Rust engine oracle
+make cli-rs  # run the Rust/ratatui port
 ```
 
 ---
